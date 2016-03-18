@@ -67,7 +67,7 @@ public class InventoryVisualizer : MonoBehaviour {
             }
 
 
-            newText.GetComponent<Text>().text = displayedGrid.nodes[i].item.ToString();
+            //newText.GetComponent<Text>().text = displayedGrid.nodes[i].item.ToString();
             newText.GetComponent<Text>().font = ItemFont;
             updatedTexts.Add(newText.GetComponent<Text>());
 
@@ -94,10 +94,10 @@ public class InventoryVisualizer : MonoBehaviour {
             displayedGrid.Swap(true);
         }
 
-        for (int i = 0; i < displayedGrid.nodes.Count; i++)
-        {
-            updatedTexts[i].text = displayedGrid.nodes[i].item.ToString();
-        }
+        //for (int i = 0; i < displayedGrid.nodes.Count; i++)
+        //{
+        //    updatedTexts[i].text = displayedGrid.nodes[i].item.ToString();
+        //}
 
 	}
 }

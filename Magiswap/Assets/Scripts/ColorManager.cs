@@ -28,9 +28,18 @@ public class ColorManager : MonoBehaviour {
         return (in_subject.layer == (int)in_compareColor);
     }
 
-    public static bool SameColor(GameObject in_right, GameObject in_left)
+    public static bool IsSameColor(GameObject in_right, GameObject in_left)
     {
         return (in_left.layer == in_right.layer);
+    }
+
+    public static CollisionColor GetColor(GameObject in_subject)
+    {
+        if (in_subject.layer < (int)CollisionColor.cc_StaticWhite || in_subject.layer > (int)CollisionColor.cc_green)
+        {
+            return CollisionColor.cc_StaticWhite;
+        }
+        return (CollisionColor)in_subject.layer;
     }
 
 }

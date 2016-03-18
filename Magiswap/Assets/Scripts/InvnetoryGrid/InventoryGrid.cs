@@ -20,8 +20,8 @@ public class InventoryGrid : MonoBehaviour {
     public class InventoryNode
     {
         public int nodeName;
-        //public GameObject item; //sould be disabled at all times when in inventory
-        public int item;
+        public GameObject item; //sould be disabled at all times when in inventory
+        //public int item;
         public float offsetX;
         public float offsetY;
         public NodeProperty property;
@@ -42,7 +42,7 @@ public class InventoryGrid : MonoBehaviour {
 
     public void Swap(bool useAltSwap = false)
     {
-        List<int> oldItems = new List<int>();
+        List<GameObject> oldItems = new List<GameObject>();
         for (int i = 0; i < nodes.Count; i++)
         {
             oldItems.Add(nodes[i].item);
@@ -97,8 +97,8 @@ public class InventoryGrid : MonoBehaviour {
             nodes[i].offsetY = template.nodes[i].ofsetY;
             nodes[i].linkA = template.nodes[i].linkA;
             nodes[i].linkB = template.nodes[i].linkB;
-            //nodes[i].item = null;
-            nodes[i].item = i + 1;
+            nodes[i].item = null;
+            //nodes[i].item = i + 1;
         }
     }
 
