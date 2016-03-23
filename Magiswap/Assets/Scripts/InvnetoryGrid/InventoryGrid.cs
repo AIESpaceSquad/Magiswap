@@ -21,6 +21,7 @@ public class InventoryGrid : MonoBehaviour {
     {
         public int nodeName;
         public GameObject item; //sould be disabled at all times when in inventory
+        //public bool isEmpty;
         //public int item;
         public float offsetX;
         public float offsetY;
@@ -70,7 +71,7 @@ public class InventoryGrid : MonoBehaviour {
     }
 
     //This method returns null fi item is not found
-    InventoryNode GetSpecialSlot(NodeProperty in_specialSlot)
+    public InventoryNode GetSpecialSlot(NodeProperty in_specialSlot)
     {
         for (int i = 0; i < nodes.Count; i++)
         {
@@ -98,6 +99,7 @@ public class InventoryGrid : MonoBehaviour {
             nodes[i].linkA = template.nodes[i].linkA;
             nodes[i].linkB = template.nodes[i].linkB;
             nodes[i].item = null;
+            //nodes[i].isEmpty = true;
             //nodes[i].item = i + 1;
         }
     }

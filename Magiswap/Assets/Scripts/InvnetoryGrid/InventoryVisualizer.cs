@@ -26,11 +26,22 @@ public class InventoryVisualizer : MonoBehaviour {
     [SerializeField]
     InventoryGrid displayedGrid;
 
-    List<Text> updatedTexts;
+    [SerializeField]
+    GameObject TestItem0;
+    [SerializeField]
+    GameObject TestItem1;
+    [SerializeField]
+    GameObject TestItem2;
+    [SerializeField]
+    GameObject TestItem3;
+
+    //InventoryGrid.InventoryNode firstPlayerNode;
+
+    List<Image> updatedImages;
 
     // Use this for initialization
     void Start () {
-        updatedTexts = new List<Text>();
+        updatedImages = new List<Image>();
 
         GameObject imageTemplate = new GameObject();
         imageTemplate.AddComponent<CanvasRenderer>();
@@ -38,7 +49,7 @@ public class InventoryVisualizer : MonoBehaviour {
 
         GameObject textTemplate = new GameObject();
         textTemplate.AddComponent<CanvasRenderer>();
-        textTemplate.AddComponent<Text>();
+        textTemplate.AddComponent<Image>();
 
         for (int i = 0; i < displayedGrid.nodes.Count; i++) {
             GameObject newObject =  GameObject.Instantiate(imageTemplate);
@@ -68,8 +79,16 @@ public class InventoryVisualizer : MonoBehaviour {
 
 
             //newText.GetComponent<Text>().text = displayedGrid.nodes[i].item.ToString();
-            newText.GetComponent<Text>().font = ItemFont;
-            updatedTexts.Add(newText.GetComponent<Text>());
+            //newText.GetComponent<Text>().font = ItemFont;
+            if (displayedGrid.nodes[i].item != null)
+            {
+                newText.GetComponent<Image>().sprite = displayedGrid.nodes[i].item.GetComponent<Item>().UISprite;
+            }
+            else
+            {
+                newText.GetComponent<Image>().sprite = defaultImage;
+            }
+            updatedImages.Add(newText.GetComponent<Image>());
 
             newObject.transform.SetParent(transform, false);
             newText.transform.SetParent(transform, false);
@@ -80,10 +99,12 @@ public class InventoryVisualizer : MonoBehaviour {
 
         GameObject.Destroy(imageTemplate);
         GameObject.Destroy(textTemplate);
+
+        //firstPlayerNode = displayedGrid.GetSpecialSlot(InventoryGrid.NodeProperty.np_Player1);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
 
         if (Input.GetKeyDown(KeyCode.Comma))
         {
@@ -93,11 +114,69 @@ public class InventoryVisualizer : MonoBehaviour {
         {
             displayedGrid.Swap(true);
         }
-
-        //for (int i = 0; i < displayedGrid.nodes.Count; i++)
+        //if (firstPlayerNode.isEmpty)
         //{
-        //    updatedTexts[i].text = displayedGrid.nodes[i].item.ToString();
+        //    if (Input.GetKeyDown(KeyCode.Alpha1))
+        //    {
+        //        if (TestItem0.activeSelf == true)
+        //        {
+        //    Debug.Log("hello");
+        //            firstPlayerNode.item = TestItem0;
+        //            TestItem0.SetActive(false);
+        //            firstPlayerNode.isEmpty = false;
+        //        }
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.Alpha2))
+        //    {
+        //        if (TestItem1.activeSelf == true)
+        //        {
+        //            firstPlayerNode.item = TestItem1;
+        //            TestItem1.SetActive(false);
+        //            firstPlayerNode.isEmpty = false;
+        //        }
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.Alpha3))
+        //    {
+        //        if (TestItem2.activeSelf == true)
+        //        {
+        //            firstPlayerNode.item = TestItem2;
+        //            TestItem2.SetActive(false);
+        //            firstPlayerNode.isEmpty = false;
+        //        }
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.Alpha4))
+        //    {
+        //        if (TestItem3.activeSelf == true)
+        //        {
+        //            firstPlayerNode.item = TestItem3;
+        //            TestItem3.SetActive(false);
+        //            firstPlayerNode.isEmpty = false;
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Alpha0))
+        //    {
+        //        GameObject releasedItem = firstPlayerNode.item;
+        //        firstPlayerNode.item = null;
+        //        releasedItem.SetActive(true);
+        //        firstPlayerNode.isEmpty = true;
+
+        //    }
         //}
 
-	}
+        for (int i = 0; i < updatedImages.Count; i++)
+        {
+            if (displayedGrid.nodes[i].item != null)
+            {
+                updatedImages[i].sprite = displayedGrid.nodes[i].item.GetComponent<Item>().UISprite;
+            }
+            else
+            {
+                updatedImages[i].sprite = defaultImage;
+            }
+        }
+
+    }
 }
