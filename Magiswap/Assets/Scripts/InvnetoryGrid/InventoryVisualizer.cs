@@ -35,7 +35,7 @@ public class InventoryVisualizer : MonoBehaviour {
     [SerializeField]
     GameObject TestItem3;
 
-    //InventoryGrid.InventoryNode firstPlayerNode;
+    InventoryGrid.InventoryNode firstPlayerNode;
 
     List<Image> updatedImages;
 
@@ -100,7 +100,7 @@ public class InventoryVisualizer : MonoBehaviour {
         GameObject.Destroy(imageTemplate);
         GameObject.Destroy(textTemplate);
 
-        //firstPlayerNode = displayedGrid.GetSpecialSlot(InventoryGrid.NodeProperty.np_Player1);
+        firstPlayerNode = displayedGrid.GetSpecialSlot(InventoryGrid.NodeProperty.np_Player1);
     }
 
     // Update is called once per frame
@@ -114,57 +114,50 @@ public class InventoryVisualizer : MonoBehaviour {
         {
             displayedGrid.Swap(true);
         }
-        //if (firstPlayerNode.isEmpty)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.Alpha1))
-        //    {
-        //        if (TestItem0.activeSelf == true)
-        //        {
-        //    Debug.Log("hello");
-        //            firstPlayerNode.item = TestItem0;
-        //            TestItem0.SetActive(false);
-        //            firstPlayerNode.isEmpty = false;
-        //        }
-        //    }
-        //    if (Input.GetKeyDown(KeyCode.Alpha2))
-        //    {
-        //        if (TestItem1.activeSelf == true)
-        //        {
-        //            firstPlayerNode.item = TestItem1;
-        //            TestItem1.SetActive(false);
-        //            firstPlayerNode.isEmpty = false;
-        //        }
-        //    }
-        //    if (Input.GetKeyDown(KeyCode.Alpha3))
-        //    {
-        //        if (TestItem2.activeSelf == true)
-        //        {
-        //            firstPlayerNode.item = TestItem2;
-        //            TestItem2.SetActive(false);
-        //            firstPlayerNode.isEmpty = false;
-        //        }
-        //    }
-        //    if (Input.GetKeyDown(KeyCode.Alpha4))
-        //    {
-        //        if (TestItem3.activeSelf == true)
-        //        {
-        //            firstPlayerNode.item = TestItem3;
-        //            TestItem3.SetActive(false);
-        //            firstPlayerNode.isEmpty = false;
-        //        }
-        //    }
-        //}
-        //else
-        //{
-        //    if (Input.GetKeyDown(KeyCode.Alpha0))
-        //    {
-        //        GameObject releasedItem = firstPlayerNode.item;
-        //        firstPlayerNode.item = null;
-        //        releasedItem.SetActive(true);
-        //        firstPlayerNode.isEmpty = true;
-
-        //    }
-        //}
+        if (!firstPlayerNode.item)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                if (TestItem0.activeSelf == true)
+                {
+                    firstPlayerNode.item = TestItem0;
+                    TestItem0.SetActive(false);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                if (TestItem1.activeSelf == true)
+                {
+                    firstPlayerNode.item = TestItem1;
+                    TestItem1.SetActive(false);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                if (TestItem2.activeSelf == true)
+                {
+                    firstPlayerNode.item = TestItem2;
+                    TestItem2.SetActive(false);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                if (TestItem3.activeSelf == true)
+                {
+                    firstPlayerNode.item = TestItem3;
+                    TestItem3.SetActive(false);
+                }
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                GameObject releasedItem = firstPlayerNode.item;
+                firstPlayerNode.item = null;
+                releasedItem.SetActive(true);
+            }
+        }
 
         for (int i = 0; i < updatedImages.Count; i++)
         {
