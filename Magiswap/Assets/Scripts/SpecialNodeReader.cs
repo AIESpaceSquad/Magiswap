@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
+using System;
+
+[System.Serializable]
+public class ChangeEvent : UnityEvent<ColorManager.CollisionColor>
+{
+
+}
 
 public class SpecialNodeReader : MonoBehaviour {
 
@@ -9,8 +16,10 @@ public class SpecialNodeReader : MonoBehaviour {
 
     [SerializeField]
     bool autoChangeColor = true;
-    [SerializeField] //all subscribed items should assume they start at cc_StaticWhite.// both cc_StaticWhite & cc_ActiveWhite will be crushed into cc_StaticWhite when this meathod is called, handle this yourself.
-    UnityEvent<ColorManager.CollisionColor> CalledOnChange;
+    [SerializeField]
+    bool autoChangeUseActiveWhite = false;
+    //all subscribed items should assume they start at cc_StaticWhite.// both cc_StaticWhite & cc_ActiveWhite will be crushed into cc_StaticWhite when this meathod is called, handle this yourself.
+    public ChangeEvent CalledOnChange;
 
     InventoryGrid.InventoryNode trackedNode;
     ColorManager.CollisionColor lastColor;
@@ -35,7 +44,14 @@ public class SpecialNodeReader : MonoBehaviour {
 
         if (autoChangeColor)
         {
-            ColorManager.ChangeColor(gameObject, ColorManager.CollisionColor.cc_StaticWhite);
+            if (autoChangeUseActiveWhite)
+            {
+                ColorManager.ChangeColor(gameObject, ColorManager.CollisionColor.cc_ActiveWhite);
+            }
+            else
+            {
+                ColorManager.ChangeColor(gameObject, ColorManager.CollisionColor.cc_StaticWhite);
+            }
         }
 	}
 	
@@ -55,16 +71,23 @@ public class SpecialNodeReader : MonoBehaviour {
         {
             lastColor = currentColor;
 
+            if (autoChangeColor && autoChangeUseActiveWhite)
+            {
+                ColorManager.ChangeColor(gameObject, currentColor);
+            }
+
             if (currentColor == ColorManager.CollisionColor.cc_ActiveWhite)
             {
                 currentColor = ColorManager.CollisionColor.cc_StaticWhite;
             }
             
-            if (autoChangeColor)
+            if (autoChangeColor && !autoChangeUseActiveWhite)
             {
                 ColorManager.ChangeColor(gameObject, currentColor);
             }
-            CalledOnChange.Invoke(currentColor);
+
+            if (CalledOnChange != null)
+                CalledOnChange.Invoke(currentColor);
         }
 	}
 }
