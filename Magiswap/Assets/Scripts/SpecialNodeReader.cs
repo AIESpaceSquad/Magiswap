@@ -12,7 +12,7 @@ public class ChangeEvent : UnityEvent<ColorManager.CollisionColor>
 public class SpecialNodeReader : MonoBehaviour {
 
     [SerializeField]
-    InventoryGrid.NodeProperty subscribedNode;
+    InventoryNode.NodeProperty subscribedNode;
 
     [SerializeField]
     bool autoChangeColor = true;
@@ -21,7 +21,7 @@ public class SpecialNodeReader : MonoBehaviour {
     //all subscribed items should assume they start at cc_StaticWhite.// both cc_StaticWhite & cc_ActiveWhite will be crushed into cc_StaticWhite when this meathod is called, handle this yourself.
     public ChangeEvent CalledOnChange;
 
-    InventoryGrid.InventoryNode trackedNode;
+    InventoryNode trackedNode;
     ColorManager.CollisionColor lastColor;
 
 	// Use this for initialization
@@ -57,14 +57,17 @@ public class SpecialNodeReader : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        ColorManager.CollisionColor currentColor;
-        if (trackedNode.item == null)
+        ColorManager.CollisionColor currentColor = lastColor;
+        if (trackedNode != null)
         {
-            currentColor = ColorManager.CollisionColor.cc_ActiveWhite;
-        }
-        else
-        {
-            currentColor = ColorManager.GetColor(trackedNode.item);
+            if (trackedNode.item == null)
+            {
+                currentColor = ColorManager.CollisionColor.cc_ActiveWhite;
+            }
+            else
+            {
+                currentColor = ColorManager.GetColor(trackedNode.item);
+            }
         }
 
         if (currentColor != lastColor)

@@ -35,7 +35,7 @@ public class InventoryVisualizer : MonoBehaviour {
     [SerializeField]
     GameObject TestItem3;
 
-    InventoryGrid.InventoryNode firstPlayerNode;
+    InventoryNode firstPlayerNode;
 
     List<Image> updatedImages;
 
@@ -57,19 +57,19 @@ public class InventoryVisualizer : MonoBehaviour {
 
             switch (displayedGrid.nodes[i].property)
             {
-                case InventoryGrid.NodeProperty.np_Player1:
+                case InventoryNode.NodeProperty.np_Player1:
                     newObject.GetComponent<Image>().sprite = player1Image;
                     break;
-                case InventoryGrid.NodeProperty.np_Player2:
+                case InventoryNode.NodeProperty.np_Player2:
                     newObject.GetComponent<Image>().sprite = player2Image;
                     break;
-                case InventoryGrid.NodeProperty.np_Symbol1:
+                case InventoryNode.NodeProperty.np_Symbol1:
                     newObject.GetComponent<Image>().sprite = Symbol1Image;
                     break;
-                case InventoryGrid.NodeProperty.np_Symbol2:
+                case InventoryNode.NodeProperty.np_Symbol2:
                     newObject.GetComponent<Image>().sprite = Symbol2Image;
                     break;
-                case InventoryGrid.NodeProperty.np_Symbol3:
+                case InventoryNode.NodeProperty.np_Symbol3:
                     newObject.GetComponent<Image>().sprite = Symbol3Image;
                     break;
                 default:
@@ -100,7 +100,7 @@ public class InventoryVisualizer : MonoBehaviour {
         GameObject.Destroy(imageTemplate);
         GameObject.Destroy(textTemplate);
 
-        firstPlayerNode = displayedGrid.GetSpecialSlot(InventoryGrid.NodeProperty.np_Player1);
+        firstPlayerNode = displayedGrid.GetSpecialSlot(InventoryNode.NodeProperty.np_Player1);
     }
 
     // Update is called once per frame

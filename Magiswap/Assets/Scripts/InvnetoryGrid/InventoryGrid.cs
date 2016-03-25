@@ -7,28 +7,6 @@ public class InventoryGrid : MonoBehaviour {
     [SerializeField]
     InventoryTemplate template;
 
-    public enum NodeProperty
-    {
-        np_None = 0,
-        np_Player1,
-        np_Player2,
-        np_Symbol1,
-        np_Symbol2,
-        np_Symbol3
-    }
-
-    public class InventoryNode
-    {
-        public int nodeName;
-        public GameObject item; //sould be disabled at all times when in inventory
-        //public bool isEmpty;
-        //public int item;
-        public float offsetX;
-        public float offsetY;
-        public NodeProperty property;
-        public int linkA;
-        public int linkB;
-    }
     [HideInInspector]
     public List<InventoryNode> nodes;
 
@@ -71,7 +49,7 @@ public class InventoryGrid : MonoBehaviour {
     }
 
     //This method returns null fi item is not found
-    public InventoryNode GetSpecialSlot(NodeProperty in_specialSlot)
+    public InventoryNode GetSpecialSlot(InventoryNode.NodeProperty in_specialSlot)
     {
         for (int i = 0; i < nodes.Count; i++)
         {
@@ -92,10 +70,9 @@ public class InventoryGrid : MonoBehaviour {
         for (int i = 0; i < template.nodes.Count; i++)
         {
             nodes.Add(new InventoryNode());
-            nodes[i].nodeName = i;
             nodes[i].property = template.nodes[i].property;
-            nodes[i].offsetX = template.nodes[i].ofsetX;
-            nodes[i].offsetY = template.nodes[i].ofsetY;
+            nodes[i].offsetX = template.nodes[i].offsetX;
+            nodes[i].offsetY = template.nodes[i].offsetY;
             nodes[i].linkA = template.nodes[i].linkA;
             nodes[i].linkB = template.nodes[i].linkB;
             nodes[i].item = null;
