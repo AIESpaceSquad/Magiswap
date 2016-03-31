@@ -3,13 +3,14 @@ using System.Collections;
 
 
 public class PlayerController : MonoBehaviour
-{
+{ 
 
     Rigidbody2D rigidBody;
     Vector2 jump;
     bool isGrounded;
     public int jumpForce;
     public int movementForce;
+    string controllerName;
 
     public KeyCode up;
     public KeyCode down;
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+
         rigidBody = GetComponent<Rigidbody2D>();
         jump = new Vector3(0, jumpForce);
         isGrounded = false;

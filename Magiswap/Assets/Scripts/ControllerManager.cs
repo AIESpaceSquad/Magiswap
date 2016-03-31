@@ -9,13 +9,12 @@ public class Controller
     public Controller(string tContollerType, int index)
     {
         controllerType = tContollerType;
-        if(controllerType == "Controller (XBOX 360 For Windows)")
+        if(controllerType == "Controller (XBOX 360 For Windows)" ||
+           controllerType == "Controller (XBOX One For Windows)")
         {
             controllerName = "gp" + (index + 1) + "_";
             Debug.Log(controllerName);
         }
-
-
     }
 }
 
@@ -25,7 +24,7 @@ public class ControllerManager : MonoBehaviour
     public List<Controller> controllerList = new List<Controller>();
     public int numberOfControllers;
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
         string[] _tControllerType = Input.GetJoystickNames();
        
