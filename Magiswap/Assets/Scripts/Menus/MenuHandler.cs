@@ -3,9 +3,14 @@ using System.Collections;
 
 public class MenuHandler : MonoBehaviour {
 
+    MenuTemplate myTemplate;
+
     GameObject greaterTitle;
     GameObject title;
     GameObject[] items;
+
+    int currentMenu;
+    int currentItem;
 
     void Awake()
     {
@@ -59,7 +64,13 @@ public class MenuHandler : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 	
 	}
+    
+    int GetMenu(string in_name)
+    {
+        return 0;
+    }
 }

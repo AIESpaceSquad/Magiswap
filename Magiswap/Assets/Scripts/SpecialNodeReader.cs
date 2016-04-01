@@ -93,4 +93,15 @@ public class SpecialNodeReader : MonoBehaviour {
                 CalledOnChange.Invoke(currentColor);
         }
 	}
+
+    void ChangeSubscribedNode(InventoryNode.NodeProperty in_newTrackedNode)
+    {
+        InventoryGrid trackedGrid = GameObject.FindObjectOfType<InventoryGrid>();
+        trackedNode = trackedGrid.GetSpecialSlot(subscribedNode);
+
+        if (trackedNode == null)
+        {
+            Debug.Log("Subscribed node not found, SpecialNodeReader will not function as intended");
+        }
+    }
 }
