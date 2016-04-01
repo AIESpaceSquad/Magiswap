@@ -10,9 +10,15 @@ public class MenuNode
     {
         public enum ItemAction
         {
-            ia_NotActive = -1, //Item will not be displayed
             ia_DoNothing = 0,
             ia_ChangeNode, //Changes to the node named in the item's parameter
+            ia_Function0,
+            ia_Function1,
+            ia_Function2,
+            ia_Function3,
+            ia_Function4,
+            ia_Function5,
+            ia_Function6,
         }
 
         public string itemText;
@@ -21,7 +27,9 @@ public class MenuNode
     }
 
     public string nodeName;
+    public string returnNode;
     public NodeItem[] nodeItems;
+    public bool hideTitle;
 
 }
 
