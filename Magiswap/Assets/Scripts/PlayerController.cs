@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     bool isGrounded;
     public int jumpForce;
     public int movementForce;
-    string controllerName;
+    public string controllerName;
 
     public KeyCode up;
     public KeyCode down;
@@ -18,10 +18,30 @@ public class PlayerController : MonoBehaviour
     public KeyCode right;
     KeyCode spacebar = KeyCode.Space;
 
+    static int nextPlayer = 1;
 
     // Use this for initialization
     void Start ()
     {
+
+        if (nextPlayer == 1)
+        {
+            //grab right controller
+            controllerName = CharacterSelector.rightController;
+            nextPlayer++;
+        }
+        else if (nextPlayer == 2)
+        {
+            //grab left controller
+            controllerName = CharacterSelector.leftController;
+            nextPlayer++;
+        }
+        else
+        {
+            Destroy(gameObject);//have too many players
+        }
+
+        Debug.Log(controllerName);
 
         rigidBody = GetComponent<Rigidbody2D>();
         jump = new Vector3(0, jumpForce);
@@ -42,9 +62,31 @@ public class PlayerController : MonoBehaviour
 
     public float PlayerInput()
     {
-        OnUpLadder();
-        OnJump();
-        return OnMoveLeftRight();
+        if (controllerName == "kbo_")
+        {
+            OnUpLadder();
+            OnJump();
+            return OnMoveLeftRight();
+        }
+
+        if (controllerName == "gp2_" || controllerName == "gp1_")
+        {
+            return OnMoveXstick(); 
+        }
+
+
+        return 0;
+    }
+
+    float OnMoveXstick()
+    {
+        Debug.Log("got into moveXstick");
+        if (Input.GetAxis(controllerName + "rStickX") > 0|| Input.GetAxis(controllerName + "rStickX") < 0)
+        {
+            Debug.Log("Thou Shall MOve!");
+            return Input.GetAxis(controllerName + "rStickX") * Time.deltaTime;
+        }
+        return 0;
     }
 
     float OnMoveLeftRight()

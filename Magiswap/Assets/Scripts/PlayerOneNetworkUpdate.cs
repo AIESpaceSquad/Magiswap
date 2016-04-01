@@ -11,16 +11,18 @@ public class PlayerOneNetworkUpdate : NetworkBehaviour
 {
     NetworkIdentity _identity;
     PlayerController _controller;
-    
+
     //declare physics component here
     //Rigidbody2D _rigid;
 
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         _identity = GetComponent<NetworkIdentity>();
         _controller = GetComponent<PlayerController>();
+
+
         //init physics
         //_rigid = GetComponent<Rigidbody2D>();
 	}
@@ -30,7 +32,8 @@ public class PlayerOneNetworkUpdate : NetworkBehaviour
     {
 	    if(!_identity.isLocalPlayer)
         {
-            if(Input.GetKeyDown(KeyCode.E))
+            transform.position += new Vector3(_controller.PlayerInput(), 0, 0);
+            if (Input.GetKeyDown(KeyCode.E))
                 return;
                 //NetworkServer.ReplacePlayerForConnection() for changing player on singleplayer
             //if player isnt controlled by client

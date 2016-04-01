@@ -13,7 +13,7 @@ public class Controller
            controllerType == "Controller (XBOX One For Windows)")
         {
             controllerName = "gp" + (index + 1) + "_";
-            Debug.Log(controllerName);
+            //Debug.Log(controllerName);
         }
     }
 }
@@ -31,10 +31,10 @@ public class ControllerManager : MonoBehaviour
         for (int i = 0; i < _tControllerType.Length; i++)
         {
             controllerList.Add(new Controller(_tControllerType[i], i));
-            Debug.Log("Controllers Name: " + _tControllerType[i]);
+            //Debug.Log("Controllers Name: " + _tControllerType[i]);
             numberOfControllers++;
         }
-        Debug.Log("Number of controllers in manager: " + controllerList.Count);
+        //Debug.Log("Number of controllers in manager: " + controllerList.Count);
         //numberOfControllers = _tControllerType.Length;
     }
 	

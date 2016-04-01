@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class jStick
 {
@@ -37,8 +38,8 @@ public class CharacterSelector : MonoBehaviour
     GameObject rightObject;
 
     //float spriteOffset;
-    static string leftController = null;
-    static string rightController = null;
+    public static string leftController = null;
+    public static string rightController = null;
 
     //List<int> currentItems;
     
@@ -53,7 +54,7 @@ public class CharacterSelector : MonoBehaviour
         jSticks = new List<jStick>();
         keyboard = new jStick();
         keyboardName = "kbo_";
-        Debug.Log("Number of controllers in manager: " + cManager.controllerList.Count);
+        //Debug.Log("Number of controllers in manager: " + cManager.controllerList.Count);
         for (int i = 0; i < cManager.controllerList.Count; i++)
         {
 
@@ -115,6 +116,7 @@ public class CharacterSelector : MonoBehaviour
             if (keyboard.selected == true)
             {
                 //start level!!!!!
+                SceneManager.LoadScene("Level1GrayBox", LoadSceneMode.Single);
                 //break;
             }
 
@@ -190,8 +192,9 @@ public class CharacterSelector : MonoBehaviour
             if (Input.GetButtonDown(cManager.controllerList[i].controllerName + "start"))
             {
                 if (jSticks[i].selected == true)
-                { 
+                {
                     //start level!!!!!
+                    SceneManager.LoadScene("Level1GrayBox", LoadSceneMode.Single);
                     break;
                 }
 
