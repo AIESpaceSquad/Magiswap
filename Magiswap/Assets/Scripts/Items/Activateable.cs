@@ -48,7 +48,7 @@ public class Activateable : MonoBehaviour {
         if (in_itemUsed == null)
         {
             if (showLogs)
-                Debug.Log("Activate may Fail, Activateable requires a key bout was not provided with an item");
+                Debug.Log("Activate may Fail, Activateable requires a key but was not provided with an item");
             return false;
         }
         if (in_itemUsed.activatorKey == itemKey)
