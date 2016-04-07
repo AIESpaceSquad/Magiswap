@@ -18,16 +18,27 @@ public class LocalPlayerController : MonoBehaviour {
     [SerializeField]
     LayerMask layermask;
 
-    float groundRadius = 0.2f;
+    float groundRadius = 0.1f;
 
     bool isFacingRight = true;
     bool isGrounded = true;
 
     Rigidbody2D myRigidbody;
 
+    [SerializeField]
+    InventoryNode.NodeProperty accessSlot;
+    InventoryGrid activeGrid;
+    InventoryNode mySlot;
+
+    float grabRadius = 1.0f;
+
 	// Use this for initialization
 	void Start () {
         myRigidbody = GetComponent<Rigidbody2D>();
+
+        activeGrid = FindObjectOfType<InventoryGrid>();
+
+        mySlot = activeGrid.GetSpecialSlot(accessSlot);
 	}
 	
 	// Update is called once per frame
@@ -70,7 +81,38 @@ public class LocalPlayerController : MonoBehaviour {
 
     void Update()
     {
+        Collider2D[] itemsInRange;
+        if (Input.GetButtonDown(controllerName + "_activate"))
+        {
+            itemsInRange = Physics2D.OverlapCircleAll(frontCheck.transform.position, grabRadius);
+            if (mySlot.item == null)
+            {
+                for (int i = 0; i < itemsInRange.Length; i++)
+                {
+                    if (itemsInRange[i].GetComponent<Item>())
+                    {
+                        mySlot.item = itemsInRange[i].gameObject;
+                        itemsInRange[i].gameObject.SetActive(false);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                mySlot.item.transform.position = frontCheck.transform.position;
+                mySlot.item.SetActive(true);
+                mySlot.item = null;
+            }
+        }
 
+        if (Input.GetButtonDown(controllerName + "_swap"))
+        {
+            activeGrid.Swap(false);
+        }
+        else if (Input.GetButtonDown(controllerName + "_swapAlt"))
+        {
+            activeGrid.Swap(true);
+        }
     }
 
     void Flip()
