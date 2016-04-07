@@ -12,13 +12,15 @@ public class MenuNode
         {
             ia_DoNothing = 0,
             ia_ChangeNode, //Changes to the node named in the item's parameter
-            ia_Function0,
-            ia_Function1,
-            ia_Function2,
-            ia_Function3,
-            ia_Function4,
-            ia_Function5,
-            ia_Function6,
+            ia_ExitMenu,
+            ia_ExitGame,
+            ia_OpenOptionsMenu,
+            ia_OpenControllerRegistry,
+            ia_OpenNetworkMatchmaker,
+            ia_OpenGameInitalizer,
+            ia_ReturnToMain,
+            ia_RevertGameCheckpoint,
+            ia_RevertGameLevel,
         }
 
         public string itemText;
