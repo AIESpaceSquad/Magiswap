@@ -99,9 +99,26 @@ public class LocalPlayerController : MonoBehaviour {
             }
             else
             {
-                mySlot.item.transform.position = frontCheck.transform.position;
-                mySlot.item.SetActive(true);
-                mySlot.item = null;
+                Activateable foundItem = null;
+                for (int i = 0; i < itemsInRange.Length; i++)
+                {
+                    foundItem = itemsInRange[i].GetComponent<Activateable>();
+                    if (foundItem != null)
+                    {
+                        break;
+                    }
+                }
+
+                if (foundItem == null)
+                {
+                    mySlot.item.transform.position = frontCheck.transform.position;
+                    mySlot.item.SetActive(true);
+                    mySlot.item = null;
+                }
+                else
+                {
+                    foundItem.AttemptActivate(mySlot.item.GetComponent<Item>());
+                }
             }
         }
 
