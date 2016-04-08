@@ -31,6 +31,7 @@ public class LocalPlayerController : MonoBehaviour {
     InventoryNode mySlot;
 
     float grabRadius = 1.0f;
+    bool jumpRequested = false;
 
 	// Use this for initialization
 	void Start () {
@@ -52,9 +53,10 @@ public class LocalPlayerController : MonoBehaviour {
             isGrounded = false;
         }
 
-        if (isGrounded && Input.GetButtonDown(controllerName + "_jump"))
+        if (isGrounded && jumpRequested)
         {
             myRigidbody.AddForce(new Vector2(0, jumpForce));
+            jumpRequested = false;
         }
 
         float move = Input.GetAxis(controllerName + "_moveX");
@@ -81,6 +83,11 @@ public class LocalPlayerController : MonoBehaviour {
 
     void Update()
     {
+        if (Input.GetButtonDown(controllerName + "_jump"))
+        {
+            jumpRequested = true;
+        }
+
         Collider2D[] itemsInRange;
         if (Input.GetButtonDown(controllerName + "_activate"))
         {
