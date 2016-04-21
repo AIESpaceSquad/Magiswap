@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InputTranslator : MonoBehaviour {
+public class InputTranslator {
 
     public enum StateCode
     {
@@ -71,13 +71,13 @@ public class InputTranslator : MonoBehaviour {
     public string controllerName;
 
 	// Use this for initialization
-	void Start () {
+	public void Start () {
         MovementCode = StateCode.state_idle;
         ActionCode = StateCode.state_idle;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public void Update () {
         moveStateAge += Time.deltaTime;
         actionStateAge += Time.deltaTime;
 

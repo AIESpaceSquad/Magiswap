@@ -5,7 +5,7 @@ using System.Collections;
 public class InputTranslatorReader : MonoBehaviour {
 
     [SerializeField]
-    InputTranslator readTranslator;
+    int readController;
     [SerializeField]
     Text outputBox;
 
@@ -13,15 +13,14 @@ public class InputTranslatorReader : MonoBehaviour {
 	void Start () {
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        string moveState = StateToString(readTranslator.MovementCode);
-        string actState = StateToString(readTranslator.ActionCode);
 
-        outputBox.text = "ms: " + moveState + " age: " + (int)readTranslator.moveStateAge + "| as: " + actState + " age: " + (int)readTranslator.actionStateAge;
-	}
+    // Update is called once per frame
+    void Update() {
+        string moveState = StateToString(ControllerHandler.GetControllerMovementState(readController));
+        string actState = StateToString(ControllerHandler.GetControllerAcionState(readController));
 
+        outputBox.text = "ms: " + moveState + " age: " + (int)ControllerHandler.GetControllerMovemnetStateAge(readController) + " | as: " + actState + " age: " + (int)ControllerHandler.GetControllerActionStateAge(readController);
+    }
 
     string StateToString(InputTranslator.StateCode in_stateCode)
     {
