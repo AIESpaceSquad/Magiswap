@@ -75,4 +75,16 @@ public class ControllerHandler : MonoBehaviour {
         Debug.Log("provided index is out of bounds");
         return Mathf.Infinity;
     }
+
+    public static void ActionFulfilled(int in_controller)
+    {
+        if (in_controller < controllerReaders.Length && in_controller >= 0)
+        {
+            controllerReaders[in_controller].ClearAction();
+        }
+        else
+        {
+            Debug.Log("provided index is out of bounds");
+        }
+    }
 }

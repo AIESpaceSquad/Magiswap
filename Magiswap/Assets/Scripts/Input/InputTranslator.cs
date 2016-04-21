@@ -99,11 +99,11 @@ public class InputTranslator {
 
         float movementX = Input.GetAxis(controllerName + "_moveX");
 
-        if (movementX > 0.1f)
+        if (movementX > 0.2f)
         {
             MovementCode = StateCode.state_mov_right;
         }
-        else if (movementX < -0.1f)
+        else if (movementX < -0.2f)
         {
             MovementCode = StateCode.state_mov_left;
         } 
