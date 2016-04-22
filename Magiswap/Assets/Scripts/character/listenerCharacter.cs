@@ -4,6 +4,8 @@ using System.Collections;
 public class listenerCharacter : MonoBehaviour {
 
     [SerializeField]
+    int playerNumber = 1;
+    [SerializeField]
     int controllerNumber = -1;//-1 is no controller
 
     [SerializeField]
@@ -19,6 +21,7 @@ public class listenerCharacter : MonoBehaviour {
     LayerMask layermask;
 
     float groundRadius = 0.1f;
+    float grabRadius = 1.0f;
 
     bool isFacingRight = true;
     bool isGrounded = true;
@@ -94,6 +97,52 @@ public class listenerCharacter : MonoBehaviour {
                         jumpRequested = true;
                         ControllerHandler.ActionFulfilled(controllerNumber);
                     }
+                    break;
+                case InputTranslator.StateCode.state_act_swap_pri:
+                    InventoryControl.RequestSwap(false);
+                    ControllerHandler.ActionFulfilled(controllerNumber);
+                    break;
+                case InputTranslator.StateCode.state_act_swap_alt:
+                    InventoryControl.RequestSwap(true);
+                    ControllerHandler.ActionFulfilled(controllerNumber);
+                    break;
+                case InputTranslator.StateCode.state_act_activate:
+
+                    Collider2D[] itemsInRange = Physics2D.OverlapCircleAll(frontCheck.transform.position, grabRadius);
+
+                    if (!InventoryControl.HasItem(playerNumber))
+                    {
+                        for (int i = 0; i < itemsInRange.Length; i++)
+                        {
+                            if (itemsInRange[i].GetComponent<Item>())
+                            {
+                                InventoryControl.RequestPickup(playerNumber, itemsInRange[i].GetComponent<Item>());
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Activateable foundObject = null;
+                        for (int i = 0; i < itemsInRange.Length; i++)
+                        {
+                            foundObject = itemsInRange[i].GetComponent<Activateable>();
+                            if (foundObject != null)
+                            {
+                                break;
+                            }
+                        }
+
+                        if (foundObject == null)
+                        {
+                            InventoryControl.RequestDrop(playerNumber, frontCheck.transform.position);
+                        }
+                        else
+                        {
+                            foundObject.AttemptActivate(InventoryControl.RequestItemInfo(playerNumber));
+                        }
+                    }
+                    ControllerHandler.ActionFulfilled(controllerNumber);
+
                     break;
             }
         }
