@@ -30,6 +30,35 @@ public class listenerCharacter : MonoBehaviour {
 
     Rigidbody2D myRigidbody;
 
+    public bool IsGrounded
+    {
+        get
+        {
+            return isGrounded;
+        }
+    } 
+    public bool IsFacingRight
+    {
+        get
+        {
+            return isFacingRight;
+        }
+    }
+    public float MoveSpeed
+    {
+        get
+        {
+            return moveSpeed;
+        }
+    }
+    public float JumpForce
+    {
+        get
+        {
+            return jumpForce;
+        }
+    }
+
     // Use this for initialization
     void Start () {
         myRigidbody = GetComponent<Rigidbody2D>();
