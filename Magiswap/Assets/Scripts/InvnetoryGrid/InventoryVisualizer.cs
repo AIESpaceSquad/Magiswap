@@ -44,11 +44,13 @@ public class InventoryVisualizer : MonoBehaviour {
     //InventoryNode firstPlayerNode;
 
     List<Image> updatedImages;
+    List<Image> backgroundImages;
 
     // Use this for initialization
     void Start () {
         
         updatedImages = new List<Image>();
+        backgroundImages = new List<Image>();
 
         GameObject imageTemplate = new GameObject();
         imageTemplate.AddComponent<CanvasRenderer>();
@@ -96,6 +98,7 @@ public class InventoryVisualizer : MonoBehaviour {
             {
                 newText.GetComponent<Image>().sprite = defaultImage;
             }
+            backgroundImages.Add(newObject.GetComponent<Image>());
             updatedImages.Add(newText.GetComponent<Image>());
 
             newObject.transform.SetParent(transform, false);
@@ -174,10 +177,13 @@ public class InventoryVisualizer : MonoBehaviour {
             {
                 updatedImages[i].color = new Color(1, 1, 1, frontTileOpacity);
                 updatedImages[i].sprite = displayedGrid.nodes[i].item.GetComponent<Item>().UISprite;
+                Color bgColor = ColorManager.GetActualColor(displayedGrid.nodes[i].item);
+                backgroundImages[i].color = new Color(bgColor.r, bgColor.g, bgColor.b, backTileOpacity);
             }
             else
             {
                 updatedImages[i].color = new Color(0, 0, 0, 0);
+                backgroundImages[i].color = new Color(1, 1, 1, backTileOpacity);
                 //updatedImages[i].sprite = defaultImage;
             }
         }

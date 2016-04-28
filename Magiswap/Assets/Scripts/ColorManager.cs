@@ -42,4 +42,24 @@ public class ColorManager : MonoBehaviour {
         return (CollisionColor)in_subject.layer;
     }
 
+    public static Color GetActualColor(GameObject in_subject)
+    {
+        if (in_subject == null)
+        {
+            return Color.white;
+        }
+        switch (GetColor(in_subject))
+        {
+            case CollisionColor.cc_Red:
+                return Color.red;
+            case CollisionColor.cc_Blue:
+                return Color.blue;
+            case CollisionColor.cc_green:
+                return Color.green;
+            case CollisionColor.cc_yellow:
+                return Color.yellow;
+            default:
+                return Color.white;
+        }
+    }
 }
