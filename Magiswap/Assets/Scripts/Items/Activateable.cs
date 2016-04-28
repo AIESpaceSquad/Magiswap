@@ -31,6 +31,23 @@ public class Activateable : MonoBehaviour {
         return false;
     }
 
+    //null is valid input
+    public void ForceActivate(Item in_itemUsed = null)
+    {
+        if (showLogs)
+            Debug.Log("Activation Forced");
+        isActive = true;
+        OnActivateImmediate(in_itemUsed);
+    }
+
+    public void ForceReset()
+    {
+        if (showLogs)
+            Debug.Log("Reset Forced");
+        Reset();
+    }
+
+
     public bool CanActivate(Item in_itemUsed = null)
     {
         if (isActive)
