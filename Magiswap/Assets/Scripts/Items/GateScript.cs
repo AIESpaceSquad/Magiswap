@@ -25,6 +25,8 @@ public class GateScript : Activateable
 
                 //when anim is done
                 targetCollider.enabled = false;
+                //delete this when anims get added
+                GetComponent<MeshRenderer>().enabled = false;
                 isComplete = true;
             }
         }

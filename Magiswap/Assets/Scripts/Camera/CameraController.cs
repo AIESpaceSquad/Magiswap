@@ -129,7 +129,7 @@ public class CameraController : MonoBehaviour {
     void OnDrawGizmos()
     {
         //yCurrentLock
-        Gizmos.DrawSphere(new Vector3(transform.position.x, yCurrentLock, 0), 1);
+        //Gizmos.DrawSphere(new Vector3(transform.position.x, yCurrentLock, 0), 1);
     }
 
     void Update()
