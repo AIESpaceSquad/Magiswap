@@ -3,6 +3,7 @@ using System.Collections;
 
 public class listenerCharacter : MonoBehaviour {
 
+
     [SerializeField]
     int playerNumber = 1;
     [SerializeField]
@@ -11,7 +12,14 @@ public class listenerCharacter : MonoBehaviour {
     [SerializeField]
     float moveSpeed = 10;
     [SerializeField]
-    float jumpForce = 15;
+    float maxJumpForce = 15;
+    [SerializeField]
+    float jumpLength = 2.0f;
+    [SerializeField]
+    AnimationCurve JumpCurve;
+    [SerializeField]
+    float airControll = 0.4f;
+    float jumpTime = 0.0f;
 
     [SerializeField]
     GameObject groundCheck;
@@ -55,7 +63,7 @@ public class listenerCharacter : MonoBehaviour {
     {
         get
         {
-            return jumpForce;
+            return maxJumpForce;
         }
     }
 
@@ -77,18 +85,25 @@ public class listenerCharacter : MonoBehaviour {
 
         if (isGrounded && jumpRequested)
         {
-            myRigidbody.AddForce(new Vector2(0, jumpForce));
+            //myRigidbody.AddForce(new Vector2(0, jumpForce));
+            jumpTime = jumpLength;
             jumpRequested = false;
+        }
+
+        float yVelocity = Physics2D.gravity.y;
+        if (jumpTime > 0.0f)
+        {
+            yVelocity = JumpCurve.Evaluate(1.0f - jumpTime / jumpLength) * maxJumpForce;
         }
 
         if (isGrounded)
         {
-            myRigidbody.velocity = new Vector2(moveDirection * moveSpeed, myRigidbody.velocity.y);
+            myRigidbody.velocity = new Vector2(moveDirection * moveSpeed, yVelocity);
         }
         else
         {
             //we'll stick some starting lag in here to make the speed difference less abrupt
-            myRigidbody.velocity = new Vector2(moveDirection * (moveSpeed / 3), myRigidbody.velocity.y);
+            myRigidbody.velocity = new Vector2(moveDirection * (moveSpeed * airControll), yVelocity);
         }
 
         if (isGrounded)
@@ -174,6 +189,11 @@ public class listenerCharacter : MonoBehaviour {
 
                     break;
             }
+        }
+
+        if (jumpTime > 0.0f)
+        {
+            jumpTime -= Time.deltaTime;
         }
     }
 
