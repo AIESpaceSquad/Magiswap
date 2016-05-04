@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class listenerCharacter : MonoBehaviour {
 
@@ -21,14 +22,19 @@ public class listenerCharacter : MonoBehaviour {
     float airControll = 0.4f;
     float jumpTime = 0.0f;
 
+    RaycastHit2D[] raycastHit;
     [SerializeField]
     GameObject groundCheck;
     [SerializeField]
     GameObject frontCheck;
     [SerializeField]
+    GameObject headCheck;
+    [SerializeField]
+    LayerMask deafultLayermask;
     LayerMask layermask;
 
-    float groundRadius = 0.1f;
+    float groundRadius = 0.01f;
+    float groundXoffset = 0.5f;
     float grabRadius = 1.0f;
 
     bool isFacingRight = true;
@@ -37,6 +43,8 @@ public class listenerCharacter : MonoBehaviour {
     int moveDirection = 0;
 
     Rigidbody2D myRigidbody;
+
+    static List<Collider2D> playerColiders;
 
     public bool IsGrounded
     {
@@ -70,12 +78,34 @@ public class listenerCharacter : MonoBehaviour {
     // Use this for initialization
     void Start () {
         myRigidbody = GetComponent<Rigidbody2D>();
+        UpdateLayermask(ColorManager.CollisionColor.cc_ActiveWhite);
+        raycastHit = new RaycastHit2D[1];
+
+        if (playerColiders == null)
+        {
+            playerColiders = new List<Collider2D>();
+        }
+
+        for (int i = 0; i < playerColiders.Count; i++)
+        {
+            Physics2D.IgnoreCollision(playerColiders[i], GetComponent<BoxCollider2D>());
+            Physics2D.IgnoreCollision(playerColiders[i], GetComponent<CircleCollider2D>());
+        }
+        playerColiders.Add(GetComponent<BoxCollider2D>());
+        playerColiders.Add(GetComponent<CircleCollider2D>());
     }
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-	if  (Physics2D.OverlapCircle(groundCheck.transform.position, groundRadius, layermask) || 
-         Physics2D.OverlapCircle(groundCheck.transform.position, groundRadius, 1 << gameObject.layer)) {//bitshift my layer an int into a layemask
+
+    // Update is called once per frame
+    void FixedUpdate() {
+        int headResult = Physics2D.LinecastNonAlloc(headCheck.transform.position, headCheck.transform.position + new Vector3(0, groundRadius * 3, 0), raycastHit, layermask);
+        int rightResult = Physics2D.LinecastNonAlloc(groundCheck.transform.position + new Vector3(groundXoffset, 0, 0), groundCheck.transform.position + new Vector3(groundXoffset, -groundRadius, 0), raycastHit, layermask);
+        int leftResult = Physics2D.LinecastNonAlloc(groundCheck.transform.position + new Vector3(-groundXoffset, 0, 0), groundCheck.transform.position + new Vector3(-groundXoffset, -groundRadius, 0), raycastHit, layermask);
+        int midResult = Physics2D.LinecastNonAlloc(groundCheck.transform.position, groundCheck.transform.position + new Vector3(0, -groundRadius, 0), raycastHit, layermask);
+
+
+
+        if (midResult + rightResult + leftResult != 0)
+        {
             isGrounded = true;
         }
         else
@@ -85,20 +115,50 @@ public class listenerCharacter : MonoBehaviour {
 
         if (isGrounded && jumpRequested)
         {
-            //myRigidbody.AddForce(new Vector2(0, jumpForce));
             jumpTime = jumpLength;
             jumpRequested = false;
         }
 
         float yVelocity = Physics2D.gravity.y;
-        if (jumpTime > 0.0f)
+        if (jumpTime < jumpLength * 0.6f)
         {
+            if (isGrounded)
+            {
+                jumpTime = 0;
+                yVelocity = 0;
+            }
+        }
+        else if (jumpTime > 0.0f)
+        {
+            if (headResult > 0)
+            {
+                jumpTime = 0;
+            }
             yVelocity = JumpCurve.Evaluate(1.0f - jumpTime / jumpLength) * maxJumpForce;
+        }
+        else if (isGrounded)
+        {
+            yVelocity = 0;
         }
 
         if (isGrounded)
         {
-            myRigidbody.velocity = new Vector2(moveDirection * moveSpeed, yVelocity);
+            float xVelocity = moveDirection * moveSpeed;
+            if (xVelocity > 0.001 || xVelocity < -0.001)
+            {
+                if (leftResult != rightResult)
+                {
+                    myRigidbody.velocity = new Vector2(xVelocity, yVelocity) + (raycastHit[0].normal * -7);
+                }
+                else
+                {
+                    myRigidbody.velocity = new Vector2(xVelocity, yVelocity);
+                }
+            }
+            else
+            {
+                myRigidbody.velocity = new Vector2(0, yVelocity);
+            }
         }
         else
         {
@@ -203,6 +263,11 @@ public class listenerCharacter : MonoBehaviour {
         Vector3 newScale = transform.localScale;
         newScale.x *= -1;
         transform.localScale = newScale;
+    }
+
+    public void UpdateLayermask(ColorManager.CollisionColor in_newColor)
+    {
+        layermask = deafultLayermask.value | (1 << gameObject.layer);
     }
 
 
