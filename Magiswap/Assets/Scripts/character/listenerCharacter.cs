@@ -306,7 +306,14 @@ public class listenerCharacter : MonoBehaviour {
 
     public void UpdateLayermask(ColorManager.CollisionColor in_newColor)
     {
-        layermask = deafultLayermask.value | (1 << gameObject.layer);
+        if (ColorManager.IsColor(gameObject, ColorManager.CollisionColor.cc_ActiveWhite))
+        {
+            layermask = deafultLayermask.value;
+        }
+        else
+        {
+            layermask = deafultLayermask.value | (1 << gameObject.layer);
+        }
     }
 
 

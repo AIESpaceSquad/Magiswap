@@ -22,7 +22,7 @@ public class InventoryVisualizer : MonoBehaviour {
 
     [SerializeField]
     float imageScale = 1;
-    float HalfImageSize = 50;
+    float HalfImageSize = 75;
 
     [SerializeField]
     float backTileOpacity = 0.8f;
