@@ -37,11 +37,16 @@ public class CameraController : MonoBehaviour {
 
     bool waitingForLanding = true;
 
+    [SerializeField]
+    bool useZLock = true;
+    float zLock = 0.0f;
+
 	// Use this for initialization
 	void Start () {
         playerRigidbody = mainTarget.GetComponent<Rigidbody2D>();
         playerCharacter = mainTarget.GetComponent<listenerCharacter>();
 
+        zLock = transform.position.z;
         yCurrentLock = mainTarget.transform.position.y;
     }
 	
@@ -123,6 +128,11 @@ public class CameraController : MonoBehaviour {
 
         //apply movement
         transform.Translate(xMovement, yMovement, 0);
+
+        if (useZLock)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, zLock);
+        }
         
     }
 
