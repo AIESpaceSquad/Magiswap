@@ -9,11 +9,12 @@ public class Controller
     public Controller(string tContollerType, int index)
     {
         controllerType = tContollerType;
+
         if(controllerType == "Controller (XBOX 360 For Windows)" ||
            controllerType == "Controller (XBOX One For Windows)")
         {
             controllerName = "gp" + (index + 1) + "_";
-            Debug.Log(controllerName);
+            //Debug.Log(controllerName);
         }
     }
 }
@@ -27,14 +28,14 @@ public class ControllerManager : MonoBehaviour
 	void Awake ()
     {
         string[] _tControllerType = Input.GetJoystickNames();
-       
+
         for (int i = 0; i < _tControllerType.Length; i++)
         {
             controllerList.Add(new Controller(_tControllerType[i], i));
-            Debug.Log("Controllers Name: " + _tControllerType[i]);
+            Debug.Log("Controller Added to the manager");
             numberOfControllers++;
         }
-        Debug.Log("Number of controllers in manager: " + controllerList.Count);
+        //Debug.Log("Number of controllers in manager: " + controllerList.Count);
         //numberOfControllers = _tControllerType.Length;
     }
 	

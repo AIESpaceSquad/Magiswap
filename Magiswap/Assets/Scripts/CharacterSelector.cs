@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class jStick
 {
@@ -37,8 +38,8 @@ public class CharacterSelector : MonoBehaviour
     GameObject rightObject;
 
     //float spriteOffset;
-    static string leftController = null;
-    static string rightController = null;
+    public static string leftController = null;
+    public static string rightController = null;
 
     //List<int> currentItems;
     
@@ -53,10 +54,10 @@ public class CharacterSelector : MonoBehaviour
         jSticks = new List<jStick>();
         keyboard = new jStick();
         keyboardName = "kbo_";
-        Debug.Log("Number of controllers in manager: " + cManager.controllerList.Count);
+        //Debug.Log("Number of controllers in manager: " + cManager.numberOfControllers);
         for (int i = 0; i < cManager.controllerList.Count; i++)
         {
-
+            
             //currentItems.Add(1);
             jSticks.Add(new jStick());
             jSticks[i].gObj = Instantiate(joystick, transform.position, Quaternion.identity) as GameObject;
@@ -115,6 +116,7 @@ public class CharacterSelector : MonoBehaviour
             if (keyboard.selected == true)
             {
                 //start level!!!!!
+                SceneManager.LoadScene("Level1GrayBox", LoadSceneMode.Single);
                 //break;
             }
 
@@ -150,7 +152,7 @@ public class CharacterSelector : MonoBehaviour
         {
             jSticks[i].inputTime += Time.deltaTime;
             //Debug.Log(cManager.controllerList[0].controllerName + "_rStickX");
-            if (Input.GetAxis(cManager.controllerList[i].controllerName + "rStickX") < 0 &&
+            if (Input.GetAxis(cManager.controllerList[i].controllerName + "moveX") < 0 &&
                 inputDelay < jSticks[i].inputTime)
             {
                 //move from center to left
@@ -158,7 +160,7 @@ public class CharacterSelector : MonoBehaviour
                 jSticks[i].inputTime = 0;
                 //move from right to center
             }
-            if (Input.GetAxis(cManager.controllerList[i].controllerName + "rStickX") > 0 &&
+            if (Input.GetAxis(cManager.controllerList[i].controllerName + "moveX") > 0 &&
                 inputDelay < jSticks[i].inputTime)
             {
                 jSticks[i].currentItem++;
@@ -190,8 +192,9 @@ public class CharacterSelector : MonoBehaviour
             if (Input.GetButtonDown(cManager.controllerList[i].controllerName + "start"))
             {
                 if (jSticks[i].selected == true)
-                { 
+                {
                     //start level!!!!!
+                    SceneManager.LoadScene("Level1GrayBox", LoadSceneMode.Single);
                     break;
                 }
 
