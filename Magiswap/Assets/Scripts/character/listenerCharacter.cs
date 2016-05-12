@@ -97,13 +97,17 @@ public class listenerCharacter : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate() {
+        //run terrain checkss
         int headResult = Physics2D.LinecastNonAlloc(headCheck.transform.position, headCheck.transform.position + new Vector3(0, groundRadius * 3, 0), raycastHit, layermask);
         int rightResult = Physics2D.LinecastNonAlloc(groundCheck.transform.position + new Vector3(groundXoffset, 0, 0), groundCheck.transform.position + new Vector3(groundXoffset, -groundRadius, 0), raycastHit, layermask);
         int leftResult = Physics2D.LinecastNonAlloc(groundCheck.transform.position + new Vector3(-groundXoffset, 0, 0), groundCheck.transform.position + new Vector3(-groundXoffset, -groundRadius, 0), raycastHit, layermask);
         int midResult = Physics2D.LinecastNonAlloc(groundCheck.transform.position, groundCheck.transform.position + new Vector3(0, -groundRadius, 0), raycastHit, layermask);
 
+        //make the raycasthitarray bigger
+        //make a method that runs through raycast hit and reduces the number of hits if any of the hits are items in the playerColiders list
+        //call this on each result so we dont think we are in the groud while inside a player
 
-
+        //determine ground state
         if (midResult + rightResult + leftResult != 0)
         {
             isGrounded = true;
@@ -113,14 +117,16 @@ public class listenerCharacter : MonoBehaviour {
             isGrounded = false;
         }
 
+        //check jump input
         if (isGrounded && jumpRequested)
         {
             jumpTime = jumpLength;
             jumpRequested = false;
         }
 
+        //determine velocity in the y direction
         float yVelocity = Physics2D.gravity.y;
-        if (jumpTime < jumpLength * 0.6f)
+        if (jumpTime < jumpLength * 0.6f)//don't interupt the jump for the first part of it
         {
             if (isGrounded)
             {
@@ -141,6 +147,7 @@ public class listenerCharacter : MonoBehaviour {
             yVelocity = 0;
         }
 
+        //horisontal movement
         if (isGrounded)
         {
             float xVelocity = moveDirection * moveSpeed;
@@ -178,6 +185,7 @@ public class listenerCharacter : MonoBehaviour {
 
     void Update()
     {
+        //get input 
         if (controllerNumber != -1)
         {
             switch (ControllerHandler.GetControllerMovementState(controllerNumber))
@@ -193,6 +201,7 @@ public class listenerCharacter : MonoBehaviour {
                     break;
             }
 
+            //interpret input
             switch (ControllerHandler.GetControllerAcionState(controllerNumber))
             {
                 case InputTranslator.StateCode.state_act_jump:
@@ -216,11 +225,37 @@ public class listenerCharacter : MonoBehaviour {
 
                     if (!InventoryControl.HasItem(playerNumber))
                     {
+                        bool pickupResult = false;
                         for (int i = 0; i < itemsInRange.Length; i++)
                         {
                             if (itemsInRange[i].GetComponent<Item>())
                             {
-                                InventoryControl.RequestPickup(playerNumber, itemsInRange[i].GetComponent<Item>());
+                                pickupResult = InventoryControl.RequestPickup(playerNumber, itemsInRange[i].GetComponent<Item>());
+                            }
+                            if (pickupResult == true)
+                            {
+                                break;
+                            }
+                        }
+                        
+                        if (pickupResult == false)
+                        {
+                            Activateable foundObject = null;
+                            for (int i = 0; i < itemsInRange.Length; i++)
+                            {
+                                foundObject = itemsInRange[i].GetComponent<Activateable>();
+                                if (foundObject != null)
+                                {
+                                    bool result = foundObject.AttemptActivate(null);
+                                    if (result == true)
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        foundObject = null;
+                                    }
+                                }
                             }
                         }
                     }
@@ -232,17 +267,21 @@ public class listenerCharacter : MonoBehaviour {
                             foundObject = itemsInRange[i].GetComponent<Activateable>();
                             if (foundObject != null)
                             {
-                                break;
+                                bool result = foundObject.AttemptActivate(InventoryControl.RequestItemInfo(playerNumber));
+                                if (result == true)
+                                {
+                                    break;//if we break here then the found object will still be filled for the drop to be able to check
+                                }
+                                else
+                                {
+                                    foundObject = null;
+                                }
                             }
                         }
 
                         if (foundObject == null)
                         {
                             InventoryControl.RequestDrop(playerNumber, frontCheck.transform.position);
-                        }
-                        else
-                        {
-                            foundObject.AttemptActivate(InventoryControl.RequestItemInfo(playerNumber));
                         }
                     }
                     ControllerHandler.ActionFulfilled(controllerNumber);
