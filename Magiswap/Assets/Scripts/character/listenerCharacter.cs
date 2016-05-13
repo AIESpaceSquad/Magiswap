@@ -45,6 +45,7 @@ public class listenerCharacter : MonoBehaviour {
     Rigidbody2D myRigidbody;
 
     static List<Collider2D> playerColiders;
+    Animator myAnimator;
 
     public bool IsGrounded
     {
@@ -93,6 +94,8 @@ public class listenerCharacter : MonoBehaviour {
         }
         playerColiders.Add(GetComponent<BoxCollider2D>());
         playerColiders.Add(GetComponent<CircleCollider2D>());
+
+        myAnimator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -292,6 +295,11 @@ public class listenerCharacter : MonoBehaviour {
         {
             jumpTime -= Time.deltaTime;
         }
+
+        //animation stuff
+        myAnimator.SetBool("IsGrounded", IsGrounded);
+        myAnimator.SetBool("IsJumping", (jumpTime > 0.0f));
+        myAnimator.SetBool("IsRunning", !(moveDirection < 0.001 && moveDirection > -0.001));
     }
 
     void Flip()
