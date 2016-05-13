@@ -45,6 +45,7 @@ public class listenerCharacter : MonoBehaviour {
     Rigidbody2D myRigidbody;
 
     static List<Collider2D> playerColiders;
+    Animator myAnimator;
 
     public bool IsGrounded
     {
@@ -79,7 +80,7 @@ public class listenerCharacter : MonoBehaviour {
     void Start () {
         myRigidbody = GetComponent<Rigidbody2D>();
         UpdateLayermask(ColorManager.CollisionColor.cc_ActiveWhite);
-        raycastHit = new RaycastHit2D[1];
+        raycastHit = new RaycastHit2D[5];
 
         if (playerColiders == null)
         {
@@ -93,22 +94,21 @@ public class listenerCharacter : MonoBehaviour {
         }
         playerColiders.Add(GetComponent<BoxCollider2D>());
         playerColiders.Add(GetComponent<CircleCollider2D>());
+
+        myAnimator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void FixedUpdate() {
-        //run terrain checkss
-        int headResult = Physics2D.LinecastNonAlloc(headCheck.transform.position, headCheck.transform.position + new Vector3(0, groundRadius * 3, 0), raycastHit, layermask);
-        int rightResult = Physics2D.LinecastNonAlloc(groundCheck.transform.position + new Vector3(groundXoffset, 0, 0), groundCheck.transform.position + new Vector3(groundXoffset, -groundRadius, 0), raycastHit, layermask);
-        int leftResult = Physics2D.LinecastNonAlloc(groundCheck.transform.position + new Vector3(-groundXoffset, 0, 0), groundCheck.transform.position + new Vector3(-groundXoffset, -groundRadius, 0), raycastHit, layermask);
-        int midResult = Physics2D.LinecastNonAlloc(groundCheck.transform.position, groundCheck.transform.position + new Vector3(0, -groundRadius, 0), raycastHit, layermask);
 
         //make the raycasthitarray bigger
         //make a method that runs through raycast hit and reduces the number of hits if any of the hits are items in the playerColiders list
         //call this on each result so we dont think we are in the groud while inside a player
 
+        int[] checkResult = viewTerrianCheckpoints();
+
         //determine ground state
-        if (midResult + rightResult + leftResult != 0)
+        if (checkResult[(int)TerrainCheck.feetCentre] + checkResult[(int)TerrainCheck.feetRight] + checkResult[(int)TerrainCheck.feetLeft] != 0)
         {
             isGrounded = true;
         }
@@ -126,17 +126,18 @@ public class listenerCharacter : MonoBehaviour {
 
         //determine velocity in the y direction
         float yVelocity = Physics2D.gravity.y;
-        if (jumpTime < jumpLength * 0.6f)//don't interupt the jump for the first part of it
+        
+        if (jumpTime > 0.0f)
         {
-            if (isGrounded)
+            if (jumpTime < jumpLength * 0.6f)//don't interupt the jump for the first part of it
             {
-                jumpTime = 0;
-                yVelocity = 0;
+                if (isGrounded)
+                {
+                    jumpTime = 0;
+                    yVelocity = 0;
+                }
             }
-        }
-        else if (jumpTime > 0.0f)
-        {
-            if (headResult > 0)
+            if (checkResult[(int)TerrainCheck.head] > 0)
             {
                 jumpTime = 0;
             }
@@ -153,7 +154,7 @@ public class listenerCharacter : MonoBehaviour {
             float xVelocity = moveDirection * moveSpeed;
             if (xVelocity > 0.001 || xVelocity < -0.001)
             {
-                if (leftResult != rightResult)
+                if (checkResult[(int)TerrainCheck.feetLeft] != checkResult[(int)TerrainCheck.feetRight])
                 {
                     myRigidbody.velocity = new Vector2(xVelocity, yVelocity) + (raycastHit[0].normal * -7);
                 }
@@ -294,6 +295,11 @@ public class listenerCharacter : MonoBehaviour {
         {
             jumpTime -= Time.deltaTime;
         }
+
+        //animation stuff
+        myAnimator.SetBool("IsGrounded", IsGrounded);
+        myAnimator.SetBool("IsJumping", (jumpTime > 0.0f));
+        myAnimator.SetBool("IsRunning", !(moveDirection < 0.001 && moveDirection > -0.001));
     }
 
     void Flip()
@@ -306,7 +312,75 @@ public class listenerCharacter : MonoBehaviour {
 
     public void UpdateLayermask(ColorManager.CollisionColor in_newColor)
     {
-        layermask = deafultLayermask.value | (1 << gameObject.layer);
+        if (ColorManager.IsColor(gameObject, ColorManager.CollisionColor.cc_ActiveWhite))
+        {
+            layermask = deafultLayermask.value;
+        }
+        else
+        {
+            layermask = deafultLayermask.value | (1 << gameObject.layer);
+        }
+    }
+
+    enum TerrainCheck
+    {
+        head = 0,
+        feetRight = 1,
+        feetLeft = 2,
+        feetCentre = 3,
+    }
+
+    //array will always be length 4 in the order of head, feetRight, feetCentre, feetLeft
+    int[] viewTerrianCheckpoints()
+    {
+        int[] results = new int[4];
+
+        raycastHit = new RaycastHit2D[5];//clear the raycasthit array 'cuz linecast won't 
+        int currentResult = Physics2D.LinecastNonAlloc(headCheck.transform.position, headCheck.transform.position + new Vector3(0, groundRadius * 3, 0), raycastHit, layermask);
+        results[(int)TerrainCheck.head] = numOfNonPlayerColliders(raycastHit, currentResult);
+
+        raycastHit = new RaycastHit2D[5];
+        currentResult = Physics2D.LinecastNonAlloc(groundCheck.transform.position + new Vector3(groundXoffset, 0, 0), groundCheck.transform.position + new Vector3(groundXoffset, -groundRadius, 0), raycastHit, layermask);
+        results[(int)TerrainCheck.feetRight] = numOfNonPlayerColliders(raycastHit, currentResult);
+
+        raycastHit = new RaycastHit2D[5];
+        currentResult = Physics2D.LinecastNonAlloc(groundCheck.transform.position + new Vector3(-groundXoffset, 0, 0), groundCheck.transform.position + new Vector3(-groundXoffset, -groundRadius, 0), raycastHit, layermask);
+        results[(int)TerrainCheck.feetLeft] = numOfNonPlayerColliders(raycastHit, currentResult);
+
+        raycastHit = new RaycastHit2D[5];
+        currentResult = Physics2D.LinecastNonAlloc(groundCheck.transform.position, groundCheck.transform.position + new Vector3(0, -groundRadius, 0), raycastHit, layermask);
+        results[(int)TerrainCheck.feetCentre] = numOfNonPlayerColliders(raycastHit, currentResult);
+
+        //results[(int)TerrainCheck.head]       = Physics2D.LinecastNonAlloc(headCheck.transform.position, headCheck.transform.position + new Vector3(0, groundRadius * 3, 0), raycastHit, layermask);
+        //results[(int)TerrainCheck.feetRight]  = Physics2D.LinecastNonAlloc(groundCheck.transform.position + new Vector3(groundXoffset, 0, 0), groundCheck.transform.position + new Vector3(groundXoffset, -groundRadius, 0), raycastHit, layermask);
+        //results[(int)TerrainCheck.feetLeft]   = Physics2D.LinecastNonAlloc(groundCheck.transform.position + new Vector3(-groundXoffset, 0, 0), groundCheck.transform.position + new Vector3(-groundXoffset, -groundRadius, 0), raycastHit, layermask);
+        //results[(int)TerrainCheck.feetCentre] = Physics2D.LinecastNonAlloc(groundCheck.transform.position, groundCheck.transform.position + new Vector3(0, -groundRadius, 0), raycastHit, layermask);
+
+        return results;
+
+    }
+
+    int numOfNonPlayerColliders(RaycastHit2D[] in_colliders, int in_originalCount)
+    {
+        int count = in_originalCount;
+        for (int i = 0; i < in_colliders.Length; i++)
+        {
+            bool isPlayerCollider = false;
+            for (int j = 0; j < playerColiders.Count; j++)
+            {
+                if (in_colliders[i].collider == playerColiders[j])
+                {
+                    isPlayerCollider = true;
+                }
+            }
+
+            if (isPlayerCollider)
+            {
+                count--;
+            }
+        }
+
+        return count;
     }
 
 
