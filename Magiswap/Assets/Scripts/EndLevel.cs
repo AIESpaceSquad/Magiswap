@@ -1,16 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 public class EndLevel : MonoBehaviour
 {
     GameObject collidedPlayer;
-    SceneLoader levelLoader;
-    public GameObject sceneManager;
     public string levelToLoad;
 	// Use this for initialization
 	void Start ()
     {
         collidedPlayer = null;
-        levelLoader = sceneManager.GetComponent<SceneLoader>();
 	}
 	
 	// Update is called once per frame
@@ -30,7 +28,7 @@ public class EndLevel : MonoBehaviour
         else if(coll.transform.tag == "Player" && 
                 collidedPlayer != coll.gameObject)
         {
-            levelLoader.LoadLevel(levelToLoad);
+            SceneManager.LoadScene("AlphaScene");
         }
     }
 }

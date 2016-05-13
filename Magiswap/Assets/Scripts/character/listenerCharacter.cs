@@ -108,7 +108,7 @@ public class listenerCharacter : MonoBehaviour {
         int[] checkResult = viewTerrianCheckpoints();
 
         //determine ground state
-        if (checkResult[(int)TerrainCheck.feetCentre] + checkResult[(int)TerrainCheck.feetRight] + checkResult[(int)TerrainCheck.feetLeft] != 0)
+        if (checkResult[(int)TerrainCheck.feetCentre] + checkResult[(int)TerrainCheck.feetRight] + checkResult[(int)TerrainCheck.feetLeft] > 0)
         {
             isGrounded = true;
         }
@@ -383,5 +383,8 @@ public class listenerCharacter : MonoBehaviour {
         return count;
     }
 
-
+    void OnDestroy()
+    {
+        playerColiders = new List<Collider2D>();
+    }
 }
