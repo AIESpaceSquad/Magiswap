@@ -126,16 +126,17 @@ public class listenerCharacter : MonoBehaviour {
 
         //determine velocity in the y direction
         float yVelocity = Physics2D.gravity.y;
-        if (jumpTime < jumpLength * 0.6f)//don't interupt the jump for the first part of it
+        
+        if (jumpTime > 0.0f)
         {
-            if (isGrounded)
+            if (jumpTime < jumpLength * 0.6f)//don't interupt the jump for the first part of it
             {
-                jumpTime = 0;
-                yVelocity = 0;
+                if (isGrounded)
+                {
+                    jumpTime = 0;
+                    yVelocity = 0;
+                }
             }
-        }
-        else if (jumpTime > 0.0f)
-        {
             if (headResult > 0)
             {
                 jumpTime = 0;
