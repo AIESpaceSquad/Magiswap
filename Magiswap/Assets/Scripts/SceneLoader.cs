@@ -6,15 +6,15 @@ using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
-    //for beta build only
-    //****
-    public Button levelOneButton;
-    public Button levelTwoButton;
-    public string levelOneName;
-    public string levelTwoName;
-    bool levelOneSelected;
-    float selectTimer, selectDeadZone, selectDelay;
-    //****
+    ////for beta build only
+    ////****
+    //public Button levelOneButton;
+    //public Button levelTwoButton;
+    //public string levelOneName;
+    //public string levelTwoName;
+    //bool levelOneSelected;
+    //float selectTimer, selectDeadZone, selectDelay;
+    ////****
 
     //will load next level in build settings
     public void LoadLevel()
@@ -62,10 +62,10 @@ public class SceneLoader : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        levelOneSelected = true;
-        selectTimer      = 0;
-        selectDeadZone   = .02f;
-        selectDelay      = .25f;
+        //levelOneSelected = true;
+        //selectTimer      = 0;
+        //selectDeadZone   = .02f;
+        //selectDelay      = .25f;
 
         //SceneManager.LoadScene(levelOneName);
     }
@@ -74,43 +74,44 @@ public class SceneLoader : MonoBehaviour
     void Update()
     {
 
-        //for beta build only
-        //****
-        selectTimer += Time.deltaTime;
+        ////for beta build only
+        ////****
+        //selectTimer += Time.deltaTime;
 
-        if (levelOneSelected)
-        {
-            levelOneButton.transform.localScale = new Vector3(1.25f,1.25f,0);
-            levelTwoButton.transform.localScale = new Vector3(1, 1, 0);
-        }
-        else
-        {
-            levelTwoButton.transform.localScale = new Vector3(1.25f, 1.25f, 0);
-            levelOneButton.transform.localScale = new Vector3(1, 1, 0);
-        }
-        // if there is input from controllers, select other button
-        if(Input.GetAxis("gp1_moveX") > selectDeadZone || Input.GetAxis("gp2_moveX") > selectDeadZone ||
-           Input.GetAxis("gp1_moveX") < -selectDeadZone || Input.GetAxis("gp2_moveX") < -selectDeadZone)
-        {
-            if (selectTimer > selectDelay)
-            {
-                selectTimer = 0;
-                levelOneSelected = !levelOneSelected;
-            }
-        }
+        //if (levelOneSelected)
+        //{
+        //    levelOneButton.transform.localScale = new Vector3(1.25f,1.25f,0);
+        //    levelTwoButton.transform.localScale = new Vector3(1, 1, 0);
+        //}
+        //else
+        //{
+        //    levelTwoButton.transform.localScale = new Vector3(1.25f, 1.25f, 0);
+        //    levelOneButton.transform.localScale = new Vector3(1, 1, 0);
+        //}
+        //// if there is input from controllers, select other button
+        //if(Input.GetAxis("gp1_moveX") > selectDeadZone || Input.GetAxis("gp2_moveX") > selectDeadZone ||
+        //   Input.GetAxis("gp1_moveX") < -selectDeadZone || Input.GetAxis("gp2_moveX") < -selectDeadZone)
+        //{
+        //    if (selectTimer > selectDelay)
+        //    {
+        //        selectTimer = 0;
+        //        levelOneSelected = !levelOneSelected;
+        //    }
+        //}
 
-        if (Input.GetButtonDown("gp1_jump") || Input.GetButtonDown("gp2_jump"))
-        {
-            if (levelOneSelected)
-                LoadLevel(levelOneName);
+        //if (Input.GetButtonDown("gp1_jump") || Input.GetButtonDown("gp2_jump"))
+        //{
+        //    if (levelOneSelected)
+        //        LoadLevel(levelOneName);
 
-            else
-                LoadLevel(levelTwoName);
-        }
-        //****
-        if (Input.GetButtonDown("gp1_back") || Input.GetButtonDown("gp2_back"))
-        {
-            LoadLevel("AlphaScene");
-        }
+        //    else
+        //        LoadLevel(levelTwoName);
+        //}
+        //if (Input.GetButtonDown("gp1_back") || Input.GetButtonDown("gp2_back"))
+        //{
+        //    LoadLevel("AlphaScene");
+        //}
+        ////****
+
     }
 }
