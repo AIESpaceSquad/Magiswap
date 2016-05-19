@@ -1,0 +1,481 @@
+fileFormatVersion: 2
+guid: 90c0d3fc2b0d2a34b879a6d303999c91
+timeCreated: 1463614651
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: rigged_character_samantha_fall_lb02:back
+    100004: rigged_character_samantha_fall_lb02:ctrl_head
+    100006: rigged_character_samantha_fall_lb02:ctrl_hip
+    100008: rigged_character_samantha_fall_lb02:ctrl_L_arm
+    100010: rigged_character_samantha_fall_lb02:ctrl_L_foot
+    100012: rigged_character_samantha_fall_lb02:ctrl_L_sleeve
+    100014: rigged_character_samantha_fall_lb02:ctrl_R_arm
+    100016: rigged_character_samantha_fall_lb02:ctrl_R_foot
+    100018: rigged_character_samantha_fall_lb02:ctrl_R_sleeve
+    100020: rigged_character_samantha_fall_lb02:ctrl_root
+    100022: rigged_character_samantha_fall_lb02:ctrl_spine1
+    100024: rigged_character_samantha_fall_lb02:ctrl_spine1_os_GRP
+    100026: rigged_character_samantha_fall_lb02:ctrl_spine2
+    100028: rigged_character_samantha_fall_lb02:ctrl_spine2_os_GRP
+    100030: rigged_character_samantha_fall_lb02:ctrl_spine3
+    100032: rigged_character_samantha_fall_lb02:ctrl_spine3_os_GRP
+    100034: rigged_character_samantha_fall_lb02:ctrl_sternum
+    100036: rigged_character_samantha_fall_lb02:ctrl_trail
+    100038: rigged_character_samantha_fall_lb02:curlTrailGrp
+    100040: rigged_character_samantha_fall_lb02:geo_samantha
+    100042: rigged_character_samantha_fall_lb02:head
+    100044: rigged_character_samantha_fall_lb02:hip
+    100046: rigged_character_samantha_fall_lb02:ik_controls
+    100048: rigged_character_samantha_fall_lb02:ik_L_arm
+    100050: rigged_character_samantha_fall_lb02:ik_L_ball
+    100052: rigged_character_samantha_fall_lb02:ik_L_leg
+    100054: rigged_character_samantha_fall_lb02:ik_L_sleeve
+    100056: rigged_character_samantha_fall_lb02:ik_L_toe
+    100058: rigged_character_samantha_fall_lb02:ik_R_arm
+    100060: rigged_character_samantha_fall_lb02:ik_R_ball
+    100062: rigged_character_samantha_fall_lb02:ik_R_leg
+    100064: rigged_character_samantha_fall_lb02:ik_R_sleeve
+    100066: rigged_character_samantha_fall_lb02:ik_R_toe
+    100068: rigged_character_samantha_fall_lb02:ik_trail
+    100070: rigged_character_samantha_fall_lb02:L_ankle
+    100072: rigged_character_samantha_fall_lb02:L_elbow
+    100074: rigged_character_samantha_fall_lb02:L_foot
+    100076: rigged_character_samantha_fall_lb02:L_heelPivotGrp
+    100078: rigged_character_samantha_fall_lb02:L_knee
+    100080: rigged_character_samantha_fall_lb02:L_ponytail1
+    100082: rigged_character_samantha_fall_lb02:L_ponytail2
+    100084: rigged_character_samantha_fall_lb02:L_ponytail3
+    100086: rigged_character_samantha_fall_lb02:L_ponytail4
+    100088: rigged_character_samantha_fall_lb02:L_ponytail5
+    100090: rigged_character_samantha_fall_lb02:L_shoulder
+    100092: rigged_character_samantha_fall_lb02:L_sleeve1
+    100094: rigged_character_samantha_fall_lb02:L_sleeve2
+    100096: rigged_character_samantha_fall_lb02:L_sleeve3
+    100098: rigged_character_samantha_fall_lb02:L_sleeve4
+    100100: rigged_character_samantha_fall_lb02:L_thigh
+    100102: rigged_character_samantha_fall_lb02:L_toe
+    100104: rigged_character_samantha_fall_lb02:L_wrist
+    100106: rigged_character_samantha_fall_lb02:left
+    100108: rigged_character_samantha_fall_lb02:neck
+    100110: rigged_character_samantha_fall_lb02:peelHeelGrp
+    100112: rigged_character_samantha_fall_lb02:peelHeelGrp 1
+    100114: rigged_character_samantha_fall_lb02:R_ankle
+    100116: rigged_character_samantha_fall_lb02:R_elbow
+    100118: rigged_character_samantha_fall_lb02:R_foot
+    100120: rigged_character_samantha_fall_lb02:R_heelPivotGrp
+    100122: rigged_character_samantha_fall_lb02:R_knee
+    100124: rigged_character_samantha_fall_lb02:R_ponytail1
+    100126: rigged_character_samantha_fall_lb02:R_ponytail2
+    100128: rigged_character_samantha_fall_lb02:R_ponytail3
+    100130: rigged_character_samantha_fall_lb02:R_ponytail4
+    100132: rigged_character_samantha_fall_lb02:R_ponytail5
+    100134: rigged_character_samantha_fall_lb02:R_shoulder
+    100136: rigged_character_samantha_fall_lb02:R_sleeve1
+    100138: rigged_character_samantha_fall_lb02:R_sleeve2
+    100140: rigged_character_samantha_fall_lb02:R_sleeve3
+    100142: rigged_character_samantha_fall_lb02:R_sleeve4
+    100144: rigged_character_samantha_fall_lb02:R_thigh
+    100146: rigged_character_samantha_fall_lb02:R_toe
+    100148: rigged_character_samantha_fall_lb02:R_wrist
+    100150: rigged_character_samantha_fall_lb02:rig_samantha
+    100152: rigged_character_samantha_fall_lb02:root_joint
+    100154: rigged_character_samantha_fall_lb02:spine1
+    100156: rigged_character_samantha_fall_lb02:spine2
+    100158: rigged_character_samantha_fall_lb02:spine3
+    100160: rigged_character_samantha_fall_lb02:sternum
+    100162: rigged_character_samantha_fall_lb02:toePivotGrp
+    100164: rigged_character_samantha_fall_lb02:toePivotGrp 1
+    100166: rigged_character_samantha_fall_lb02:toeTapGrp
+    100168: rigged_character_samantha_fall_lb02:toeTapGrp 1
+    100170: rigged_character_samantha_fall_lb02:trail1
+    100172: rigged_character_samantha_fall_lb02:trail2
+    100174: rigged_character_samantha_fall_lb02:trail3
+    100176: rigged_character_samantha_fall_lb02:trail4
+    100178: rigged_character_samantha_fall_lb02:trail5
+    100180: rigged_character_samantha_fall_lb02:trail6
+    100182: rigged_character_samantha_fall_lb02:trail7
+    100184: rigged_character_samantha_fall_lb02:trail8
+    400000: //RootNode
+    400002: rigged_character_samantha_fall_lb02:back
+    400004: rigged_character_samantha_fall_lb02:ctrl_head
+    400006: rigged_character_samantha_fall_lb02:ctrl_hip
+    400008: rigged_character_samantha_fall_lb02:ctrl_L_arm
+    400010: rigged_character_samantha_fall_lb02:ctrl_L_foot
+    400012: rigged_character_samantha_fall_lb02:ctrl_L_sleeve
+    400014: rigged_character_samantha_fall_lb02:ctrl_R_arm
+    400016: rigged_character_samantha_fall_lb02:ctrl_R_foot
+    400018: rigged_character_samantha_fall_lb02:ctrl_R_sleeve
+    400020: rigged_character_samantha_fall_lb02:ctrl_root
+    400022: rigged_character_samantha_fall_lb02:ctrl_spine1
+    400024: rigged_character_samantha_fall_lb02:ctrl_spine1_os_GRP
+    400026: rigged_character_samantha_fall_lb02:ctrl_spine2
+    400028: rigged_character_samantha_fall_lb02:ctrl_spine2_os_GRP
+    400030: rigged_character_samantha_fall_lb02:ctrl_spine3
+    400032: rigged_character_samantha_fall_lb02:ctrl_spine3_os_GRP
+    400034: rigged_character_samantha_fall_lb02:ctrl_sternum
+    400036: rigged_character_samantha_fall_lb02:ctrl_trail
+    400038: rigged_character_samantha_fall_lb02:curlTrailGrp
+    400040: rigged_character_samantha_fall_lb02:geo_samantha
+    400042: rigged_character_samantha_fall_lb02:head
+    400044: rigged_character_samantha_fall_lb02:hip
+    400046: rigged_character_samantha_fall_lb02:ik_controls
+    400048: rigged_character_samantha_fall_lb02:ik_L_arm
+    400050: rigged_character_samantha_fall_lb02:ik_L_ball
+    400052: rigged_character_samantha_fall_lb02:ik_L_leg
+    400054: rigged_character_samantha_fall_lb02:ik_L_sleeve
+    400056: rigged_character_samantha_fall_lb02:ik_L_toe
+    400058: rigged_character_samantha_fall_lb02:ik_R_arm
+    400060: rigged_character_samantha_fall_lb02:ik_R_ball
+    400062: rigged_character_samantha_fall_lb02:ik_R_leg
+    400064: rigged_character_samantha_fall_lb02:ik_R_sleeve
+    400066: rigged_character_samantha_fall_lb02:ik_R_toe
+    400068: rigged_character_samantha_fall_lb02:ik_trail
+    400070: rigged_character_samantha_fall_lb02:L_ankle
+    400072: rigged_character_samantha_fall_lb02:L_elbow
+    400074: rigged_character_samantha_fall_lb02:L_foot
+    400076: rigged_character_samantha_fall_lb02:L_heelPivotGrp
+    400078: rigged_character_samantha_fall_lb02:L_knee
+    400080: rigged_character_samantha_fall_lb02:L_ponytail1
+    400082: rigged_character_samantha_fall_lb02:L_ponytail2
+    400084: rigged_character_samantha_fall_lb02:L_ponytail3
+    400086: rigged_character_samantha_fall_lb02:L_ponytail4
+    400088: rigged_character_samantha_fall_lb02:L_ponytail5
+    400090: rigged_character_samantha_fall_lb02:L_shoulder
+    400092: rigged_character_samantha_fall_lb02:L_sleeve1
+    400094: rigged_character_samantha_fall_lb02:L_sleeve2
+    400096: rigged_character_samantha_fall_lb02:L_sleeve3
+    400098: rigged_character_samantha_fall_lb02:L_sleeve4
+    400100: rigged_character_samantha_fall_lb02:L_thigh
+    400102: rigged_character_samantha_fall_lb02:L_toe
+    400104: rigged_character_samantha_fall_lb02:L_wrist
+    400106: rigged_character_samantha_fall_lb02:left
+    400108: rigged_character_samantha_fall_lb02:neck
+    400110: rigged_character_samantha_fall_lb02:peelHeelGrp
+    400112: rigged_character_samantha_fall_lb02:peelHeelGrp 1
+    400114: rigged_character_samantha_fall_lb02:R_ankle
+    400116: rigged_character_samantha_fall_lb02:R_elbow
+    400118: rigged_character_samantha_fall_lb02:R_foot
+    400120: rigged_character_samantha_fall_lb02:R_heelPivotGrp
+    400122: rigged_character_samantha_fall_lb02:R_knee
+    400124: rigged_character_samantha_fall_lb02:R_ponytail1
+    400126: rigged_character_samantha_fall_lb02:R_ponytail2
+    400128: rigged_character_samantha_fall_lb02:R_ponytail3
+    400130: rigged_character_samantha_fall_lb02:R_ponytail4
+    400132: rigged_character_samantha_fall_lb02:R_ponytail5
+    400134: rigged_character_samantha_fall_lb02:R_shoulder
+    400136: rigged_character_samantha_fall_lb02:R_sleeve1
+    400138: rigged_character_samantha_fall_lb02:R_sleeve2
+    400140: rigged_character_samantha_fall_lb02:R_sleeve3
+    400142: rigged_character_samantha_fall_lb02:R_sleeve4
+    400144: rigged_character_samantha_fall_lb02:R_thigh
+    400146: rigged_character_samantha_fall_lb02:R_toe
+    400148: rigged_character_samantha_fall_lb02:R_wrist
+    400150: rigged_character_samantha_fall_lb02:rig_samantha
+    400152: rigged_character_samantha_fall_lb02:root_joint
+    400154: rigged_character_samantha_fall_lb02:spine1
+    400156: rigged_character_samantha_fall_lb02:spine2
+    400158: rigged_character_samantha_fall_lb02:spine3
+    400160: rigged_character_samantha_fall_lb02:sternum
+    400162: rigged_character_samantha_fall_lb02:toePivotGrp
+    400164: rigged_character_samantha_fall_lb02:toePivotGrp 1
+    400166: rigged_character_samantha_fall_lb02:toeTapGrp
+    400168: rigged_character_samantha_fall_lb02:toeTapGrp 1
+    400170: rigged_character_samantha_fall_lb02:trail1
+    400172: rigged_character_samantha_fall_lb02:trail2
+    400174: rigged_character_samantha_fall_lb02:trail3
+    400176: rigged_character_samantha_fall_lb02:trail4
+    400178: rigged_character_samantha_fall_lb02:trail5
+    400180: rigged_character_samantha_fall_lb02:trail6
+    400182: rigged_character_samantha_fall_lb02:trail7
+    400184: rigged_character_samantha_fall_lb02:trail8
+    4300000: rigged_character_samantha_fall_lb02:geo_samantha
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: rigged_character_samantha_fall_lb02:geo_samantha
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:back
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:ctrl_head
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:ctrl_hip
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:ctrl_spine1_os_GRP
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:ctrl_spine1_os_GRP/rigged_character_samantha_fall_lb02:ctrl_spine1
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:ctrl_spine2_os_GRP
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:ctrl_spine2_os_GRP/rigged_character_samantha_fall_lb02:ctrl_spine2
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:ctrl_spine3_os_GRP
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:ctrl_spine3_os_GRP/rigged_character_samantha_fall_lb02:ctrl_spine3
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:ctrl_sternum
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_L_arm
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_L_arm/rigged_character_samantha_fall_lb02:ctrl_L_sleeve
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_L_arm/rigged_character_samantha_fall_lb02:ctrl_L_sleeve/rigged_character_samantha_fall_lb02:ik_L_sleeve
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_L_arm/rigged_character_samantha_fall_lb02:ik_L_arm
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_L_foot
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_L_foot/rigged_character_samantha_fall_lb02:L_heelPivotGrp
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_L_foot/rigged_character_samantha_fall_lb02:L_heelPivotGrp/rigged_character_samantha_fall_lb02:toePivotGrp
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_L_foot/rigged_character_samantha_fall_lb02:L_heelPivotGrp/rigged_character_samantha_fall_lb02:toePivotGrp/rigged_character_samantha_fall_lb02:peelHeelGrp
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_L_foot/rigged_character_samantha_fall_lb02:L_heelPivotGrp/rigged_character_samantha_fall_lb02:toePivotGrp/rigged_character_samantha_fall_lb02:peelHeelGrp/rigged_character_samantha_fall_lb02:ik_L_leg
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_L_foot/rigged_character_samantha_fall_lb02:L_heelPivotGrp/rigged_character_samantha_fall_lb02:toePivotGrp/rigged_character_samantha_fall_lb02:toeTapGrp
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_L_foot/rigged_character_samantha_fall_lb02:L_heelPivotGrp/rigged_character_samantha_fall_lb02:toePivotGrp/rigged_character_samantha_fall_lb02:toeTapGrp/rigged_character_samantha_fall_lb02:ik_L_ball
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_L_foot/rigged_character_samantha_fall_lb02:L_heelPivotGrp/rigged_character_samantha_fall_lb02:toePivotGrp/rigged_character_samantha_fall_lb02:toeTapGrp/rigged_character_samantha_fall_lb02:ik_L_toe
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_R_arm
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_R_arm/rigged_character_samantha_fall_lb02:ctrl_R_sleeve
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_R_arm/rigged_character_samantha_fall_lb02:ctrl_R_sleeve/rigged_character_samantha_fall_lb02:ik_R_sleeve
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_R_arm/rigged_character_samantha_fall_lb02:ik_R_arm
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_R_foot
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_R_foot/rigged_character_samantha_fall_lb02:R_heelPivotGrp
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_R_foot/rigged_character_samantha_fall_lb02:R_heelPivotGrp/rigged_character_samantha_fall_lb02:toePivotGrp
+          1
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_R_foot/rigged_character_samantha_fall_lb02:R_heelPivotGrp/rigged_character_samantha_fall_lb02:toePivotGrp
+          1/rigged_character_samantha_fall_lb02:peelHeelGrp 1
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_R_foot/rigged_character_samantha_fall_lb02:R_heelPivotGrp/rigged_character_samantha_fall_lb02:toePivotGrp
+          1/rigged_character_samantha_fall_lb02:peelHeelGrp 1/rigged_character_samantha_fall_lb02:ik_R_leg
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_R_foot/rigged_character_samantha_fall_lb02:R_heelPivotGrp/rigged_character_samantha_fall_lb02:toePivotGrp
+          1/rigged_character_samantha_fall_lb02:toeTapGrp 1
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_R_foot/rigged_character_samantha_fall_lb02:R_heelPivotGrp/rigged_character_samantha_fall_lb02:toePivotGrp
+          1/rigged_character_samantha_fall_lb02:toeTapGrp 1/rigged_character_samantha_fall_lb02:ik_R_ball
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_R_foot/rigged_character_samantha_fall_lb02:R_heelPivotGrp/rigged_character_samantha_fall_lb02:toePivotGrp
+          1/rigged_character_samantha_fall_lb02:toeTapGrp 1/rigged_character_samantha_fall_lb02:ik_R_toe
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_trail
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_trail/rigged_character_samantha_fall_lb02:curlTrailGrp
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:ik_controls/rigged_character_samantha_fall_lb02:ctrl_trail/rigged_character_samantha_fall_lb02:curlTrailGrp/rigged_character_samantha_fall_lb02:ik_trail
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:L_thigh
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:L_thigh/rigged_character_samantha_fall_lb02:L_knee
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:L_thigh/rigged_character_samantha_fall_lb02:L_knee/rigged_character_samantha_fall_lb02:L_ankle
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:L_thigh/rigged_character_samantha_fall_lb02:L_knee/rigged_character_samantha_fall_lb02:L_ankle/rigged_character_samantha_fall_lb02:L_foot
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:L_thigh/rigged_character_samantha_fall_lb02:L_knee/rigged_character_samantha_fall_lb02:L_ankle/rigged_character_samantha_fall_lb02:L_foot/rigged_character_samantha_fall_lb02:L_toe
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:R_thigh
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:R_thigh/rigged_character_samantha_fall_lb02:R_knee
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:R_thigh/rigged_character_samantha_fall_lb02:R_knee/rigged_character_samantha_fall_lb02:R_ankle
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:R_thigh/rigged_character_samantha_fall_lb02:R_knee/rigged_character_samantha_fall_lb02:R_ankle/rigged_character_samantha_fall_lb02:R_foot
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:R_thigh/rigged_character_samantha_fall_lb02:R_knee/rigged_character_samantha_fall_lb02:R_ankle/rigged_character_samantha_fall_lb02:R_foot/rigged_character_samantha_fall_lb02:R_toe
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:L_shoulder
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:L_shoulder/rigged_character_samantha_fall_lb02:L_elbow
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:L_shoulder/rigged_character_samantha_fall_lb02:L_elbow/rigged_character_samantha_fall_lb02:L_wrist
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:L_shoulder/rigged_character_samantha_fall_lb02:L_elbow/rigged_character_samantha_fall_lb02:L_wrist/rigged_character_samantha_fall_lb02:L_sleeve1
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:L_shoulder/rigged_character_samantha_fall_lb02:L_elbow/rigged_character_samantha_fall_lb02:L_wrist/rigged_character_samantha_fall_lb02:L_sleeve1/rigged_character_samantha_fall_lb02:L_sleeve2
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:L_shoulder/rigged_character_samantha_fall_lb02:L_elbow/rigged_character_samantha_fall_lb02:L_wrist/rigged_character_samantha_fall_lb02:L_sleeve1/rigged_character_samantha_fall_lb02:L_sleeve2/rigged_character_samantha_fall_lb02:L_sleeve3
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:L_shoulder/rigged_character_samantha_fall_lb02:L_elbow/rigged_character_samantha_fall_lb02:L_wrist/rigged_character_samantha_fall_lb02:L_sleeve1/rigged_character_samantha_fall_lb02:L_sleeve2/rigged_character_samantha_fall_lb02:L_sleeve3/rigged_character_samantha_fall_lb02:L_sleeve4
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:neck
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:neck/rigged_character_samantha_fall_lb02:head
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:neck/rigged_character_samantha_fall_lb02:head/rigged_character_samantha_fall_lb02:L_ponytail1
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:neck/rigged_character_samantha_fall_lb02:head/rigged_character_samantha_fall_lb02:L_ponytail1/rigged_character_samantha_fall_lb02:L_ponytail2
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:neck/rigged_character_samantha_fall_lb02:head/rigged_character_samantha_fall_lb02:L_ponytail1/rigged_character_samantha_fall_lb02:L_ponytail2/rigged_character_samantha_fall_lb02:L_ponytail3
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:neck/rigged_character_samantha_fall_lb02:head/rigged_character_samantha_fall_lb02:L_ponytail1/rigged_character_samantha_fall_lb02:L_ponytail2/rigged_character_samantha_fall_lb02:L_ponytail3/rigged_character_samantha_fall_lb02:L_ponytail4
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:neck/rigged_character_samantha_fall_lb02:head/rigged_character_samantha_fall_lb02:L_ponytail1/rigged_character_samantha_fall_lb02:L_ponytail2/rigged_character_samantha_fall_lb02:L_ponytail3/rigged_character_samantha_fall_lb02:L_ponytail4/rigged_character_samantha_fall_lb02:L_ponytail5
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:neck/rigged_character_samantha_fall_lb02:head/rigged_character_samantha_fall_lb02:R_ponytail1
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:neck/rigged_character_samantha_fall_lb02:head/rigged_character_samantha_fall_lb02:R_ponytail1/rigged_character_samantha_fall_lb02:R_ponytail2
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:neck/rigged_character_samantha_fall_lb02:head/rigged_character_samantha_fall_lb02:R_ponytail1/rigged_character_samantha_fall_lb02:R_ponytail2/rigged_character_samantha_fall_lb02:R_ponytail3
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:neck/rigged_character_samantha_fall_lb02:head/rigged_character_samantha_fall_lb02:R_ponytail1/rigged_character_samantha_fall_lb02:R_ponytail2/rigged_character_samantha_fall_lb02:R_ponytail3/rigged_character_samantha_fall_lb02:R_ponytail4
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:neck/rigged_character_samantha_fall_lb02:head/rigged_character_samantha_fall_lb02:R_ponytail1/rigged_character_samantha_fall_lb02:R_ponytail2/rigged_character_samantha_fall_lb02:R_ponytail3/rigged_character_samantha_fall_lb02:R_ponytail4/rigged_character_samantha_fall_lb02:R_ponytail5
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:R_shoulder
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:R_shoulder/rigged_character_samantha_fall_lb02:R_elbow
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:R_shoulder/rigged_character_samantha_fall_lb02:R_elbow/rigged_character_samantha_fall_lb02:R_wrist
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:R_shoulder/rigged_character_samantha_fall_lb02:R_elbow/rigged_character_samantha_fall_lb02:R_wrist/rigged_character_samantha_fall_lb02:R_sleeve1
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:R_shoulder/rigged_character_samantha_fall_lb02:R_elbow/rigged_character_samantha_fall_lb02:R_wrist/rigged_character_samantha_fall_lb02:R_sleeve1/rigged_character_samantha_fall_lb02:R_sleeve2
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:R_shoulder/rigged_character_samantha_fall_lb02:R_elbow/rigged_character_samantha_fall_lb02:R_wrist/rigged_character_samantha_fall_lb02:R_sleeve1/rigged_character_samantha_fall_lb02:R_sleeve2/rigged_character_samantha_fall_lb02:R_sleeve3
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:spine1/rigged_character_samantha_fall_lb02:spine2/rigged_character_samantha_fall_lb02:spine3/rigged_character_samantha_fall_lb02:sternum/rigged_character_samantha_fall_lb02:R_shoulder/rigged_character_samantha_fall_lb02:R_elbow/rigged_character_samantha_fall_lb02:R_wrist/rigged_character_samantha_fall_lb02:R_sleeve1/rigged_character_samantha_fall_lb02:R_sleeve2/rigged_character_samantha_fall_lb02:R_sleeve3/rigged_character_samantha_fall_lb02:R_sleeve4
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:trail1
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:trail1/rigged_character_samantha_fall_lb02:trail2
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:trail1/rigged_character_samantha_fall_lb02:trail2/rigged_character_samantha_fall_lb02:trail3
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:trail1/rigged_character_samantha_fall_lb02:trail2/rigged_character_samantha_fall_lb02:trail3/rigged_character_samantha_fall_lb02:trail4
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:trail1/rigged_character_samantha_fall_lb02:trail2/rigged_character_samantha_fall_lb02:trail3/rigged_character_samantha_fall_lb02:trail4/rigged_character_samantha_fall_lb02:trail5
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:trail1/rigged_character_samantha_fall_lb02:trail2/rigged_character_samantha_fall_lb02:trail3/rigged_character_samantha_fall_lb02:trail4/rigged_character_samantha_fall_lb02:trail5/rigged_character_samantha_fall_lb02:trail6
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:trail1/rigged_character_samantha_fall_lb02:trail2/rigged_character_samantha_fall_lb02:trail3/rigged_character_samantha_fall_lb02:trail4/rigged_character_samantha_fall_lb02:trail5/rigged_character_samantha_fall_lb02:trail6/rigged_character_samantha_fall_lb02:trail7
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:ctrl_root/rigged_character_samantha_fall_lb02:rig_samantha/rigged_character_samantha_fall_lb02:root_joint/rigged_character_samantha_fall_lb02:hip/rigged_character_samantha_fall_lb02:trail1/rigged_character_samantha_fall_lb02:trail2/rigged_character_samantha_fall_lb02:trail3/rigged_character_samantha_fall_lb02:trail4/rigged_character_samantha_fall_lb02:trail5/rigged_character_samantha_fall_lb02:trail6/rigged_character_samantha_fall_lb02:trail7/rigged_character_samantha_fall_lb02:trail8
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:geo_samantha
+        weight: 1
+      - path: rigged_character_samantha_fall_lb02:left
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

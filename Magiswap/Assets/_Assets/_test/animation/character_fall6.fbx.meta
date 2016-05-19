@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: faad8a36591c4d143acf4b05c7d2d76e
+timeCreated: 1463619013
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: rigged_character_samantha_js15:head
+    100004: rigged_character_samantha_js15:hip
+    100006: rigged_character_samantha_js15:L_ankle
+    100008: rigged_character_samantha_js15:L_elbow
+    100010: rigged_character_samantha_js15:L_foot
+    100012: rigged_character_samantha_js15:L_knee
+    100014: rigged_character_samantha_js15:L_ponytail1
+    100016: rigged_character_samantha_js15:L_ponytail2
+    100018: rigged_character_samantha_js15:L_ponytail3
+    100020: rigged_character_samantha_js15:L_ponytail4
+    100022: rigged_character_samantha_js15:L_ponytail5
+    100024: rigged_character_samantha_js15:L_shoulder
+    100026: rigged_character_samantha_js15:L_sleeve1
+    100028: rigged_character_samantha_js15:L_sleeve2
+    100030: rigged_character_samantha_js15:L_sleeve3
+    100032: rigged_character_samantha_js15:L_sleeve4
+    100034: rigged_character_samantha_js15:L_thigh
+    100036: rigged_character_samantha_js15:L_toe
+    100038: rigged_character_samantha_js15:L_wrist
+    100040: rigged_character_samantha_js15:neck
+    100042: rigged_character_samantha_js15:R_ankle
+    100044: rigged_character_samantha_js15:R_elbow
+    100046: rigged_character_samantha_js15:R_foot
+    100048: rigged_character_samantha_js15:R_knee
+    100050: rigged_character_samantha_js15:R_ponytail1
+    100052: rigged_character_samantha_js15:R_ponytail2
+    100054: rigged_character_samantha_js15:R_ponytail3
+    100056: rigged_character_samantha_js15:R_ponytail4
+    100058: rigged_character_samantha_js15:R_ponytail5
+    100060: rigged_character_samantha_js15:R_shoulder
+    100062: rigged_character_samantha_js15:R_sleeve1
+    100064: rigged_character_samantha_js15:R_sleeve2
+    100066: rigged_character_samantha_js15:R_sleeve3
+    100068: rigged_character_samantha_js15:R_sleeve4
+    100070: rigged_character_samantha_js15:R_thigh
+    100072: rigged_character_samantha_js15:R_toe
+    100074: rigged_character_samantha_js15:R_wrist
+    100076: rigged_character_samantha_js15:rig_samantha
+    100078: rigged_character_samantha_js15:root_joint
+    100080: rigged_character_samantha_js15:spine1
+    100082: rigged_character_samantha_js15:spine2
+    100084: rigged_character_samantha_js15:spine3
+    100086: rigged_character_samantha_js15:sternum
+    100088: rigged_character_samantha_js15:trail1
+    100090: rigged_character_samantha_js15:trail2
+    100092: rigged_character_samantha_js15:trail3
+    100094: rigged_character_samantha_js15:trail4
+    100096: rigged_character_samantha_js15:trail5
+    100098: rigged_character_samantha_js15:trail6
+    100100: rigged_character_samantha_js15:trail7
+    100102: rigged_character_samantha_js15:trail8
+    400000: //RootNode
+    400002: rigged_character_samantha_js15:head
+    400004: rigged_character_samantha_js15:hip
+    400006: rigged_character_samantha_js15:L_ankle
+    400008: rigged_character_samantha_js15:L_elbow
+    400010: rigged_character_samantha_js15:L_foot
+    400012: rigged_character_samantha_js15:L_knee
+    400014: rigged_character_samantha_js15:L_ponytail1
+    400016: rigged_character_samantha_js15:L_ponytail2
+    400018: rigged_character_samantha_js15:L_ponytail3
+    400020: rigged_character_samantha_js15:L_ponytail4
+    400022: rigged_character_samantha_js15:L_ponytail5
+    400024: rigged_character_samantha_js15:L_shoulder
+    400026: rigged_character_samantha_js15:L_sleeve1
+    400028: rigged_character_samantha_js15:L_sleeve2
+    400030: rigged_character_samantha_js15:L_sleeve3
+    400032: rigged_character_samantha_js15:L_sleeve4
+    400034: rigged_character_samantha_js15:L_thigh
+    400036: rigged_character_samantha_js15:L_toe
+    400038: rigged_character_samantha_js15:L_wrist
+    400040: rigged_character_samantha_js15:neck
+    400042: rigged_character_samantha_js15:R_ankle
+    400044: rigged_character_samantha_js15:R_elbow
+    400046: rigged_character_samantha_js15:R_foot
+    400048: rigged_character_samantha_js15:R_knee
+    400050: rigged_character_samantha_js15:R_ponytail1
+    400052: rigged_character_samantha_js15:R_ponytail2
+    400054: rigged_character_samantha_js15:R_ponytail3
+    400056: rigged_character_samantha_js15:R_ponytail4
+    400058: rigged_character_samantha_js15:R_ponytail5
+    400060: rigged_character_samantha_js15:R_shoulder
+    400062: rigged_character_samantha_js15:R_sleeve1
+    400064: rigged_character_samantha_js15:R_sleeve2
+    400066: rigged_character_samantha_js15:R_sleeve3
+    400068: rigged_character_samantha_js15:R_sleeve4
+    400070: rigged_character_samantha_js15:R_thigh
+    400072: rigged_character_samantha_js15:R_toe
+    400074: rigged_character_samantha_js15:R_wrist
+    400076: rigged_character_samantha_js15:rig_samantha
+    400078: rigged_character_samantha_js15:root_joint
+    400080: rigged_character_samantha_js15:spine1
+    400082: rigged_character_samantha_js15:spine2
+    400084: rigged_character_samantha_js15:spine3
+    400086: rigged_character_samantha_js15:sternum
+    400088: rigged_character_samantha_js15:trail1
+    400090: rigged_character_samantha_js15:trail2
+    400092: rigged_character_samantha_js15:trail3
+    400094: rigged_character_samantha_js15:trail4
+    400096: rigged_character_samantha_js15:trail5
+    400098: rigged_character_samantha_js15:trail6
+    400100: rigged_character_samantha_js15:trail7
+    400102: rigged_character_samantha_js15:trail8
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
