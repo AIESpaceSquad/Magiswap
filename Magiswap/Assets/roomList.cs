@@ -16,12 +16,14 @@ public class roomList : MonoBehaviour
 
         foreach (RoomInfo room in PhotonNetwork.GetRoomList())
         {
-            //if the game is private or if there are mre than one other players
-            if(room.name.Substring(0,7) == "PRIVATE" || room.playerCount > 1)
+            //if the games name is shorter than 7
+            // if the game is private 
+            //or if there are more than one other players
+            if(room.name.Length > 7 && room.name.Substring(0,7).CompareTo("PRIVATE") == 0 || room.playerCount > 1)
             {
                 return;
             }
-            
+
             CreateButton(room.name, buttonYOffset);
             buttonYOffset += buttonYOffset;
         }
