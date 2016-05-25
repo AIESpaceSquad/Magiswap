@@ -32,24 +32,24 @@ public class InventoryVisualizer : MonoBehaviour {
     [SerializeField]
     InventoryGrid displayedGrid;
 
-    //[SerializeField]
-    //GameObject TestItem0;
-    //[SerializeField]
-    //GameObject TestItem1;
-    //[SerializeField]
-    //GameObject TestItem2;
-    //[SerializeField]
-    //GameObject TestItem3;
-
-    //InventoryNode firstPlayerNode;
-
     List<Image> updatedImages;
+    List<Transform> movedImages;
     List<Image> backgroundImages;
+
+    int numGridSlots;
+    Vector3[] itemRestingPositions;
+
+    bool MovementActive;
+    Sprite[] tempSprites;
+    Vector3[] itemEndPosition;
 
     // Use this for initialization
     void Start () {
+
+        numGridSlots = 0;
         
         updatedImages = new List<Image>();
+        movedImages = new List<Transform>();
         backgroundImages = new List<Image>();
 
         GameObject imageTemplate = new GameObject();
@@ -59,6 +59,11 @@ public class InventoryVisualizer : MonoBehaviour {
         GameObject textTemplate = new GameObject();
         textTemplate.AddComponent<CanvasRenderer>();
         textTemplate.AddComponent<Image>();
+
+        numGridSlots = displayedGrid.nodes.Count;
+        itemRestingPositions = new Vector3[numGridSlots];
+        tempSprites = new Sprite[numGridSlots];
+        itemEndPosition = new Vector3[numGridSlots];
 
         for (int i = 0; i < displayedGrid.nodes.Count; i++) {
             GameObject newObject =  GameObject.Instantiate(imageTemplate);
@@ -100,12 +105,14 @@ public class InventoryVisualizer : MonoBehaviour {
             }
             backgroundImages.Add(newObject.GetComponent<Image>());
             updatedImages.Add(newText.GetComponent<Image>());
+            movedImages.Add(newText.transform);
 
             newObject.transform.SetParent(transform, false);
             newText.transform.SetParent(transform, false);
 
             newObject.transform.position = new Vector3((HalfImageSize * displayedGrid.nodes[i].offsetX) + transform.position.x, (HalfImageSize * displayedGrid.nodes[i].offsetY) + transform.position.y, 1);
             newText.transform.position = new Vector3(((HalfImageSize * displayedGrid.nodes[i].offsetX) + transform.position.x), ((HalfImageSize * displayedGrid.nodes[i].offsetY) + transform.position.y), 0);
+            itemRestingPositions[i] = newText.transform.position;
         }
 
         GameObject.Destroy(imageTemplate);
@@ -118,65 +125,27 @@ public class InventoryVisualizer : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        //if (Input.GetKeyDown(KeyCode.Comma))
+        //float currentPrecentage = InventoryControl.RemainingCooldown / InventoryControl.SwapCooldown; //lerps will be backwards as this is the remaining time
+        //if (currentPrecentage <= 0.0f)
         //{
-        //    displayedGrid.Swap(false);
-        //}
-        //if (Input.GetKeyDown(KeyCode.Period))
-        //{
-        //    displayedGrid.Swap(true);
-        //}
-        //if (!firstPlayerNode.item)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.Alpha1))
-        //    {
-        //        if (TestItem0.activeSelf == true)
-        //        {
-        //            firstPlayerNode.item = TestItem0;
-        //            TestItem0.SetActive(false);
-        //        }
-        //    }
-        //    if (Input.GetKeyDown(KeyCode.Alpha2))
-        //    {
-        //        if (TestItem1.activeSelf == true)
-        //        {
-        //            firstPlayerNode.item = TestItem1;
-        //            TestItem1.SetActive(false);
-        //        }
-        //    }
-        //    if (Input.GetKeyDown(KeyCode.Alpha3))
-        //    {
-        //        if (TestItem2.activeSelf == true)
-        //        {
-        //            firstPlayerNode.item = TestItem2;
-        //            TestItem2.SetActive(false);
-        //        }
-        //    }
-        //    if (Input.GetKeyDown(KeyCode.Alpha4))
-        //    {
-        //        if (TestItem3.activeSelf == true)
-        //        {
-        //            firstPlayerNode.item = TestItem3;
-        //            TestItem3.SetActive(false);
-        //        }
-        //    }
-        //}
-        //else
-        //{
-        //    if (Input.GetKeyDown(KeyCode.Alpha0))
-        //    {
-        //        GameObject releasedItem = firstPlayerNode.item;
-        //        firstPlayerNode.item = null;
-        //        releasedItem.SetActive(true);
-        //    }
+        //    MovementActive = false;
         //}
 
         for (int i = 0; i < updatedImages.Count; i++)
         {
             if (displayedGrid.nodes[i].item != null)
             {
+                //if (MovementActive)
+                //{
+                //    movedImages[i].position = Vector3.Lerp(itemEndPosition[i], itemRestingPositions[i], currentPrecentage);
+                //    updatedImages[i].sprite = tempSprites[i];
+                //}
+                //else
+                //{
+                    //movedImages[i].position = itemRestingPositions[i];
+                    updatedImages[i].sprite = displayedGrid.nodes[i].item.GetComponent<Item>().UISprite;
+                //}
                 updatedImages[i].color = new Color(1, 1, 1, frontTileOpacity);
-                updatedImages[i].sprite = displayedGrid.nodes[i].item.GetComponent<Item>().UISprite;
                 Color bgColor = ColorManager.GetActualColor(displayedGrid.nodes[i].item);
                 backgroundImages[i].color = new Color(bgColor.r, bgColor.g, bgColor.b, backTileOpacity);
             }
@@ -188,5 +157,92 @@ public class InventoryVisualizer : MonoBehaviour {
             }
         }
 
+    }
+
+    public void callBeforeChange(int in_player, bool in_argument)
+    {
+        for (int i = 0; i < tempSprites.Length; i++)
+        {
+            tempSprites[i] = updatedImages[i].sprite;
+        }
+
+        if (in_player == -1)//swapping
+        {
+            if (in_argument)//use alt swap
+            {
+                for (int i = 0; i < itemEndPosition.Length; i++)
+                {
+                    itemEndPosition[i] = itemRestingPositions[displayedGrid.nodes[i].linkB]; //moves to the resting position of it's link
+                }
+            }
+            else //don't use alt swap
+            {
+                for (int i = 0; i < itemEndPosition.Length; i++)
+                {
+                    itemEndPosition[i] = itemRestingPositions[displayedGrid.nodes[i].linkA];
+                }
+            }
+        }
+        else // droping/ picking up
+        {
+            for (int i = 0; i < itemRestingPositions.Length; i++)
+            {
+                itemEndPosition[i] = itemRestingPositions[i];
+            }
+        }
+    }
+
+    public void callAfterChange(int in_player, bool in_argument)
+    {
+        if (in_player != 0)
+        {
+
+            int playerNodeIndex = 0;
+            InventoryNode playerNode = null;
+            InventoryNode.NodeProperty targetProperty;
+
+            if (in_player == 1) {
+                targetProperty = InventoryNode.NodeProperty.np_Player1;
+            }
+            else if (in_player == 2)
+            {
+                targetProperty = InventoryNode.NodeProperty.np_Player2;
+            }
+            else
+            {
+                Debug.Log("player given is invalid");
+                return;
+            }
+
+            while (playerNodeIndex < displayedGrid.nodes.Count)
+            {
+                if (displayedGrid.nodes[playerNodeIndex].property == targetProperty)
+                {
+                    playerNode = displayedGrid.nodes[playerNodeIndex];
+                    break;
+                }
+                playerNodeIndex++;
+            }
+
+            if (in_argument) //isDrop
+            {
+                if (in_player == 1)
+                {
+                    itemEndPosition[playerNodeIndex] = itemEndPosition[playerNodeIndex] + new Vector3(0, HalfImageSize * 2, 0);
+                }
+                else
+                {
+                    itemEndPosition[playerNodeIndex] = itemEndPosition[playerNodeIndex] + new Vector3(0, -HalfImageSize * 2, 0);
+                }
+            }
+            else
+            {
+                tempSprites[playerNodeIndex] = playerNode.item.GetComponent<Item>().UISprite;
+                itemEndPosition[playerNodeIndex] = itemEndPosition[playerNodeIndex] + new Vector3(HalfImageSize, 0, 0);
+                
+            }
+        }
+
+        MovementActive = true;
     }
 }

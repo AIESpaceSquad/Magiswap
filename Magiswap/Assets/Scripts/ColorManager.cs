@@ -48,7 +48,12 @@ public class ColorManager : MonoBehaviour {
         {
             return Color.white;
         }
-        switch (GetColor(in_subject))
+        return GetActualColor(GetColor(in_subject));
+    }
+
+    public static Color GetActualColor(CollisionColor in_subject)
+    {
+        switch (in_subject)
         {
             case CollisionColor.cc_Red:
                 return Color.red;

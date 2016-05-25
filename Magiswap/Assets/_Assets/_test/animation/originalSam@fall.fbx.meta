@@ -1,0 +1,313 @@
+fileFormatVersion: 2
+guid: fec03b143571ad24b95d1717f7f46652
+timeCreated: 1463697470
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: ctrl_root
+    100002: head
+    100004: hip
+    100006: L_ankle
+    100008: L_elbow
+    100010: L_foot
+    100012: L_knee
+    100014: L_ponytail1
+    100016: L_ponytail2
+    100018: L_ponytail3
+    100020: L_ponytail4
+    100022: L_ponytail5
+    100024: L_shoulder
+    100026: L_sleeve1
+    100028: L_sleeve2
+    100030: L_sleeve3
+    100032: L_sleeve4
+    100034: L_thigh
+    100036: L_toe
+    100038: L_wrist
+    100040: neck
+    100042: //RootNode
+    100044: R_ankle
+    100046: R_elbow
+    100048: R_foot
+    100050: R_knee
+    100052: R_ponytail1
+    100054: R_ponytail2
+    100056: R_ponytail3
+    100058: R_ponytail4
+    100060: R_ponytail5
+    100062: R_shoulder
+    100064: R_sleeve1
+    100066: R_sleeve2
+    100068: R_sleeve3
+    100070: R_sleeve4
+    100072: R_thigh
+    100074: R_toe
+    100076: R_wrist
+    100078: rig_samantha
+    100080: root_joint
+    100082: spine1
+    100084: spine2
+    100086: spine3
+    100088: sternum
+    100090: trail1
+    100092: trail2
+    100094: trail3
+    100096: trail4
+    100098: trail5
+    100100: trail6
+    100102: trail7
+    100104: trail8
+    400000: ctrl_root
+    400002: head
+    400004: hip
+    400006: L_ankle
+    400008: L_elbow
+    400010: L_foot
+    400012: L_knee
+    400014: L_ponytail1
+    400016: L_ponytail2
+    400018: L_ponytail3
+    400020: L_ponytail4
+    400022: L_ponytail5
+    400024: L_shoulder
+    400026: L_sleeve1
+    400028: L_sleeve2
+    400030: L_sleeve3
+    400032: L_sleeve4
+    400034: L_thigh
+    400036: L_toe
+    400038: L_wrist
+    400040: neck
+    400042: //RootNode
+    400044: R_ankle
+    400046: R_elbow
+    400048: R_foot
+    400050: R_knee
+    400052: R_ponytail1
+    400054: R_ponytail2
+    400056: R_ponytail3
+    400058: R_ponytail4
+    400060: R_ponytail5
+    400062: R_shoulder
+    400064: R_sleeve1
+    400066: R_sleeve2
+    400068: R_sleeve3
+    400070: R_sleeve4
+    400072: R_thigh
+    400074: R_toe
+    400076: R_wrist
+    400078: rig_samantha
+    400080: root_joint
+    400082: spine1
+    400084: spine2
+    400086: spine3
+    400088: sternum
+    400090: trail1
+    400092: trail2
+    400094: trail3
+    400096: trail4
+    400098: trail5
+    400100: trail6
+    400102: trail7
+    400104: trail8
+    7400000: fall
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: fall
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 56
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ctrl_root
+        weight: 1
+      - path: ctrl_root/rig_samantha
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/L_thigh
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/L_thigh/L_knee
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/L_thigh/L_knee/L_ankle
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/L_thigh/L_knee/L_ankle/L_foot
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/L_thigh/L_knee/L_ankle/L_foot/L_toe
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/R_thigh
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/R_thigh/R_knee
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/R_thigh/R_knee/R_ankle
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/R_thigh/R_knee/R_ankle/R_foot
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/R_thigh/R_knee/R_ankle/R_foot/R_toe
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/L_shoulder
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/L_shoulder/L_elbow
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/L_shoulder/L_elbow/L_wrist
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/L_shoulder/L_elbow/L_wrist/L_sleeve1
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/L_shoulder/L_elbow/L_wrist/L_sleeve1/L_sleeve2
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/L_shoulder/L_elbow/L_wrist/L_sleeve1/L_sleeve2/L_sleeve3
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/L_shoulder/L_elbow/L_wrist/L_sleeve1/L_sleeve2/L_sleeve3/L_sleeve4
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/neck
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/neck/head
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/neck/head/L_ponytail1
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/neck/head/L_ponytail1/L_ponytail2
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/neck/head/L_ponytail1/L_ponytail2/L_ponytail3
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/neck/head/L_ponytail1/L_ponytail2/L_ponytail3/L_ponytail4
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/neck/head/L_ponytail1/L_ponytail2/L_ponytail3/L_ponytail4/L_ponytail5
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/neck/head/R_ponytail1
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/neck/head/R_ponytail1/R_ponytail2
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/neck/head/R_ponytail1/R_ponytail2/R_ponytail3
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/neck/head/R_ponytail1/R_ponytail2/R_ponytail3/R_ponytail4
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/neck/head/R_ponytail1/R_ponytail2/R_ponytail3/R_ponytail4/R_ponytail5
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/R_shoulder
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/R_shoulder/R_elbow
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/R_shoulder/R_elbow/R_wrist
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/R_shoulder/R_elbow/R_wrist/R_sleeve1
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/R_shoulder/R_elbow/R_wrist/R_sleeve1/R_sleeve2
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/R_shoulder/R_elbow/R_wrist/R_sleeve1/R_sleeve2/R_sleeve3
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/spine1/spine2/spine3/sternum/R_shoulder/R_elbow/R_wrist/R_sleeve1/R_sleeve2/R_sleeve3/R_sleeve4
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/trail1
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/trail1/trail2
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/trail1/trail2/trail3
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/trail1/trail2/trail3/trail4
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/trail1/trail2/trail3/trail4/trail5
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/trail1/trail2/trail3/trail4/trail5/trail6
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/trail1/trail2/trail3/trail4/trail5/trail6/trail7
+        weight: 1
+      - path: ctrl_root/rig_samantha/root_joint/hip/trail1/trail2/trail3/trail4/trail5/trail6/trail7/trail8
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

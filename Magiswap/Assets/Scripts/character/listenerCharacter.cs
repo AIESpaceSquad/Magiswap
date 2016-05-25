@@ -21,6 +21,7 @@ public class listenerCharacter : MonoBehaviour {
     [SerializeField]
     float airControll = 0.4f;
     float jumpTime = 0.0f;
+    bool moveLock = false;
 
     RaycastHit2D[] raycastHit;
     [SerializeField]
@@ -41,6 +42,10 @@ public class listenerCharacter : MonoBehaviour {
     bool isGrounded = true;
     bool jumpRequested = false;
     int moveDirection = 0;
+
+    bool onMovingPlatform = false;
+    Transform detectedMovingPlatform = null;
+    Vector3 lastPlatformPosition;
 
     Rigidbody2D myRigidbody;
 
@@ -101,10 +106,6 @@ public class listenerCharacter : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate() {
 
-        //make the raycasthitarray bigger
-        //make a method that runs through raycast hit and reduces the number of hits if any of the hits are items in the playerColiders list
-        //call this on each result so we dont think we are in the groud while inside a player
-
         int[] checkResult = viewTerrianCheckpoints();
 
         //determine ground state
@@ -149,14 +150,24 @@ public class listenerCharacter : MonoBehaviour {
         }
 
         //horisontal movement
-        if (isGrounded)
+        if (moveLock)
+        {
+            myRigidbody.velocity = new Vector2(0, yVelocity);
+        }
+        else if (isGrounded)
         {
             float xVelocity = moveDirection * moveSpeed;
             if (xVelocity > 0.001 || xVelocity < -0.001)
             {
-                if (checkResult[(int)TerrainCheck.feetLeft] != checkResult[(int)TerrainCheck.feetRight])
+                if (checkResult[(int)TerrainCheck.feetLeft] > checkResult[(int)TerrainCheck.feetRight])
                 {
-                    myRigidbody.velocity = new Vector2(xVelocity, yVelocity) + (raycastHit[0].normal * -7);
+                    RaycastHit2D hitAngle = Physics2D.Linecast(groundCheck.transform.position, groundCheck.transform.position + new Vector3(-groundXoffset, -groundRadius, 0), layermask);
+                    myRigidbody.velocity = new Vector2(xVelocity, yVelocity) + (hitAngle.normal * -4);
+                }
+                else if (checkResult[(int)TerrainCheck.feetLeft] < checkResult[(int)TerrainCheck.feetRight])
+                {
+                    RaycastHit2D hitAngle = Physics2D.Linecast(groundCheck.transform.position, groundCheck.transform.position + new Vector3(groundXoffset, -groundRadius, 0), layermask);
+                    myRigidbody.velocity = new Vector2(xVelocity, yVelocity) + (hitAngle.normal * -4);
                 }
                 else
                 {
@@ -170,8 +181,15 @@ public class listenerCharacter : MonoBehaviour {
         }
         else
         {
-            //we'll stick some starting lag in here to make the speed difference less abrupt
             myRigidbody.velocity = new Vector2(moveDirection * (moveSpeed * airControll), yVelocity);
+        }
+
+        if (onMovingPlatform)
+        {
+            Vector3 platformDiff = detectedMovingPlatform.position - lastPlatformPosition;
+            lastPlatformPosition = new Vector3() + detectedMovingPlatform.position; //being paranoid about references
+
+            transform.position += platformDiff;
         }
 
         if (isGrounded)
@@ -293,7 +311,19 @@ public class listenerCharacter : MonoBehaviour {
 
         if (jumpTime > 0.0f)
         {
-            jumpTime -= Time.deltaTime;
+            if (jumpTime > jumpLength * 0.8f)
+            {
+                moveLock = true;
+            }
+            else
+            {
+                moveLock = false;
+            }
+                jumpTime -= Time.deltaTime;
+        }
+        else
+        {
+            moveLock = false;
         }
 
         //animation stuff
@@ -350,6 +380,23 @@ public class listenerCharacter : MonoBehaviour {
         raycastHit = new RaycastHit2D[5];
         currentResult = Physics2D.LinecastNonAlloc(groundCheck.transform.position, groundCheck.transform.position + new Vector3(0, -groundRadius, 0), raycastHit, layermask);
         results[(int)TerrainCheck.feetCentre] = numOfNonPlayerColliders(raycastHit, currentResult);
+
+        bool wasOnMoovingPatform = onMovingPlatform;
+        onMovingPlatform = false;
+
+        for (int i = 0; i < raycastHit.Length; i++)
+        {
+            if (raycastHit[i].transform != null && raycastHit[i].transform.tag.CompareTo("MovingPlatform") == 0)
+            {
+                onMovingPlatform = true;
+                if (!wasOnMoovingPatform)
+                {
+                    detectedMovingPlatform = raycastHit[i].transform;
+                    lastPlatformPosition = new Vector3() + detectedMovingPlatform.position;//making sure that i'm not just taking a refrence
+                    break;
+                }
+            }
+        }
 
         //results[(int)TerrainCheck.head]       = Physics2D.LinecastNonAlloc(headCheck.transform.position, headCheck.transform.position + new Vector3(0, groundRadius * 3, 0), raycastHit, layermask);
         //results[(int)TerrainCheck.feetRight]  = Physics2D.LinecastNonAlloc(groundCheck.transform.position + new Vector3(groundXoffset, 0, 0), groundCheck.transform.position + new Vector3(groundXoffset, -groundRadius, 0), raycastHit, layermask);

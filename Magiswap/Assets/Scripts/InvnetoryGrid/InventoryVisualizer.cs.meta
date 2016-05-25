@@ -1,16 +1,16 @@
 fileFormatVersion: 2
 guid: 29fa0cc19b53cd1429d7bc2f1d50e42d
-timeCreated: 1461878085
+timeCreated: 1463674014
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - defaultImage: {fileID: 21300000, guid: be61df81504d05749af67d7a240a8157, type: 3}
-  - player1Image: {fileID: 21300000, guid: 0f07417641216014f9c9ee73f992e9e3, type: 3}
-  - player2Image: {fileID: 21300000, guid: 69385a98c916a204996b11bf9dbec80a, type: 3}
-  - Symbol1Image: {fileID: 21300000, guid: 96342971885d36a449f570f1db61c055, type: 3}
-  - Symbol2Image: {fileID: 21300000, guid: a30dcdfa6ff925c4c8ff90722f4c4694, type: 3}
-  - Symbol3Image: {fileID: 21300000, guid: 59726df5d81c0714fb1caaafa7b0b848, type: 3}
+  - defaultImage: {fileID: 21300000, guid: b87dee4a400129044ba68c133b9eef3f, type: 3}
+  - player1Image: {fileID: 21300000, guid: 04927212ad975c6498ae655243fd6d65, type: 3}
+  - player2Image: {fileID: 21300000, guid: df56a4e8c5675844b8e5abf7a13d9c3a, type: 3}
+  - Symbol1Image: {fileID: 21300000, guid: e9c8806bc94f41541a92b423171fc3e2, type: 3}
+  - Symbol2Image: {fileID: 21300000, guid: abb83d25e04a2704d842b8fc83951af4, type: 3}
+  - Symbol3Image: {fileID: 21300000, guid: fa6614a2758f69c4aa8303df295291b4, type: 3}
   - ItemFont: {instanceID: 0}
   - displayedGrid: {instanceID: 0}
   executionOrder: 0

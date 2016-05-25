@@ -1,5 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
+
+[System.Serializable]
+public class InventoryModifyEvent : UnityEvent<int, bool>//player (if zero then it's a swap), isDrop (alteritively isAltSwap)
+{
+
+}
 
 public class InventoryControl : MonoBehaviour {
 
@@ -14,11 +21,48 @@ public class InventoryControl : MonoBehaviour {
 
     static float remainingCooldown = 0.0f;
 
+    public static float SwapCooldown
+    {
+        get
+        {
+            return majorActionCooldown;
+        }
+    }
+    public static float DropCooldown
+    {
+        get
+        {
+            return minorActionCooldown;
+        }
+    }
+    public static float RemainingCooldown
+    {
+        get {
+            return remainingCooldown;
+        }
+    }
+
+    [SerializeField]
+    InventoryModifyEvent CalledBeforeChange;
+    [SerializeField]
+    InventoryModifyEvent CalledAfterChange;
+
+    static InventoryModifyEvent staticBeforeChange;
+    static InventoryModifyEvent staticAfterChange;
+
 	// Use this for initialization
 	void Start () {
+        if (activeGrid != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         activeGrid = GetComponent<InventoryGrid>();
         player1Item = activeGrid.GetSpecialSlot(InventoryNode.NodeProperty.np_Player1);
         player2Item = activeGrid.GetSpecialSlot(InventoryNode.NodeProperty.np_Player2);
+
+        staticBeforeChange = CalledBeforeChange;
+        staticAfterChange = CalledAfterChange;
 	}
 	
 	// Update is called once per frame
@@ -36,8 +80,13 @@ public class InventoryControl : MonoBehaviour {
         {
             return false;
         }
+
+        staticBeforeChange.Invoke(0, in_alternate);
+
         activeGrid.Swap(in_alternate);
         remainingCooldown = majorActionCooldown;
+
+        staticAfterChange.Invoke(0, in_alternate);
         return true;
     }
 
@@ -89,6 +138,8 @@ public class InventoryControl : MonoBehaviour {
             return null;
         }
 
+        staticBeforeChange.Invoke(in_player, true);
+
         GameObject currentItem;
         if (in_player == 1)
         {
@@ -121,6 +172,9 @@ public class InventoryControl : MonoBehaviour {
 
         currentItem.SetActive(true);
         remainingCooldown = minorActionCooldown;
+
+        staticAfterChange.Invoke(in_player, true);
+
         return currentItem.GetComponent<Item>();
     }
 
@@ -145,6 +199,8 @@ public class InventoryControl : MonoBehaviour {
             return false;
         }
 
+        staticBeforeChange.Invoke(in_player, false);
+
         if (in_player == 1)
         {
             player1Item.item = in_incomingItem.gameObject;
@@ -161,6 +217,9 @@ public class InventoryControl : MonoBehaviour {
 
         remainingCooldown = minorActionCooldown;
         in_incomingItem.gameObject.SetActive(false);
+
+        staticAfterChange.Invoke(in_player, false);
+
         return true;
 
     }
