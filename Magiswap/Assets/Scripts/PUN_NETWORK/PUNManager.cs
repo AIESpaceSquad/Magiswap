@@ -20,6 +20,8 @@ public class PUNManager : Photon.PunBehaviour
     //public GameObject inputField;
     RoomOptions roomOptions;
     bool debugRoom;
+    string levelToLoadName;
+    string buttonName;
     //bool publicGame;
 	// Use this for initialization
 	void Start ()
@@ -37,8 +39,9 @@ public class PUNManager : Photon.PunBehaviour
 
         if(PhotonNetwork.inRoom)
         {
+            int i = PhotonNetwork.playerList.Length - 1;
             GUILayout.Label(PhotonNetwork.room.name + " " + PhotonNetwork.GetPing().ToString());
-            GUILayout.Label("Your in!");
+            GUILayout.Label("Your in! You and " + i + " other people");
         }
         else
             GUILayout.Label("Couldn't find a room :(");
@@ -53,8 +56,22 @@ public class PUNManager : Photon.PunBehaviour
     // Update is called once per frame
     void Update ()
     {
-	    
-	}
+
+    }
+
+    public void SetNextLevel(string levelToLoad)
+    {
+        if (levelToLoad != null)
+        {
+            levelToLoadName = levelToLoad;
+            inputField.interactable = true;
+            inputField.ActivateInputField();
+        }
+        else
+        {
+            Debug.Log("no level to load");
+        }
+    }
 
     public void OnFindGame()
     { 
@@ -66,21 +83,16 @@ public class PUNManager : Photon.PunBehaviour
             roomListPanel.SetActive(true);
             //lobbyState = LobbyState.NotInRoom;
         }
-       // Joined a room! Enjoy!
-        //else
-        //{
-        //    lobbyState = LobbyState.JoinRandom;
-        //}
-
-
     }
 
     public void OnCreatePrivate()
     {
         if(lobbyState == LobbyState.NotInRoom)
         {
-            inputField.interactable = true;
-            inputField.ActivateInputField();
+            for(int i = 0; i < inputField.transform.childCount; i++)
+            {
+                inputField.transform.GetChild(i).gameObject.SetActive(true);
+            }
             lobbyState = LobbyState.CreatePrivate;
         }
     }
@@ -89,8 +101,10 @@ public class PUNManager : Photon.PunBehaviour
     {
         if (lobbyState == LobbyState.NotInRoom)
         {
-            inputField.interactable = true;
-            inputField.ActivateInputField();
+            for (int i = 0; i < inputField.transform.childCount; i++)
+            {
+                inputField.transform.GetChild(i).gameObject.SetActive(true);
+            }
             lobbyState = LobbyState.CreatePublic;
         }
     }
@@ -103,6 +117,20 @@ public class PUNManager : Photon.PunBehaviour
             inputField.ActivateInputField();
             lobbyState = LobbyState.JoinPrivate;
         }
+    }
+    public void RecieveName(Text _buttonName)
+    {
+        buttonName = _buttonName.text;
+    }
+    public void JoinPublicGame()
+    {
+        //Debug.Log(buttonName);
+        PhotonNetwork.JoinRoom(buttonName);
+    }
+
+    public void OnStartGame()
+    {
+        PhotonNetwork.LoadLevel(levelToLoadName);
     }
 
     public void OnEndString()
