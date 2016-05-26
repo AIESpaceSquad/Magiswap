@@ -5,6 +5,8 @@ public class GateScript : Activateable
 {
     [SerializeField]
     Collider2D targetCollider;
+    [SerializeField]
+    Animator targetAnimator;
 
     //target animator
 
@@ -22,12 +24,12 @@ public class GateScript : Activateable
             if (isActive)
             {
                 //wait for animations
-
-                //when anim is done
-                targetCollider.enabled = false;
-                //delete this when anims get added
-                GetComponent<MeshRenderer>().enabled = false;
-                isComplete = true;
+                if ((targetAnimator != null && targetAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) ||
+                   targetAnimator == null)
+                {
+                    targetCollider.enabled = false;
+                    isComplete = true;
+                }
             }
         }
 	}
@@ -35,5 +37,9 @@ public class GateScript : Activateable
     protected override void OnActivateImmediate(Item in_itemUsed)
     {
         //start anims
+        if (targetAnimator != null)
+        {
+            targetAnimator.SetBool("AcitvatorTrigger", true);
+        }
     }
 }

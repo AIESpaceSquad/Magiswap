@@ -7,6 +7,8 @@ public class ActivatorActivator : Activateable
     Activateable target;
     [SerializeField]
     activeMode activateMode = activeMode.am_activateOnly;
+    [SerializeField]
+    Animator targetAnimator;
     bool isOn = false;
 
     public enum activeMode
@@ -35,6 +37,10 @@ public class ActivatorActivator : Activateable
 
     protected override void OnActivateImmediate(Item in_itemUsed)
     {
+        if (targetAnimator != null)
+        {
+            targetAnimator.SetTrigger("AcitvatorTrigger");
+        }
         switch (activateMode) {
             case activeMode.am_toggle:
                 if (isOn)
