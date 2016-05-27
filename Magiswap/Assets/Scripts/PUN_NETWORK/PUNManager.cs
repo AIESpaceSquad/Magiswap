@@ -17,6 +17,7 @@ public class PUNManager : Photon.PunBehaviour
     LobbyState lobbyState;
     public InputField inputField;
     public GameObject roomListPanel;
+    public GameObject RoomViewPanel;
     //public GameObject inputField;
     RoomOptions roomOptions;
     bool debugRoom;
@@ -139,14 +140,17 @@ public class PUNManager : Photon.PunBehaviour
         {
             case LobbyState.CreatePrivate:
                 PhotonNetwork.CreateRoom("PRIVATE" + inputField.text);
+                RoomViewPanel.SetActive(true);
                 break;
             case LobbyState.CreatePublic:
                 PhotonNetwork.CreateRoom(inputField.text);
+                RoomViewPanel.SetActive(true);
                 break;
             case LobbyState.JoinRandom:
                 break;
             case LobbyState.JoinPrivate:
                 PhotonNetwork.JoinRoom("PRIVATE" + inputField.text);
+                RoomViewPanel.SetActive(true);
                 break;
         }
     }
