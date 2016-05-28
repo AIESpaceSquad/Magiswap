@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using System.Collections;
 
 [System.Serializable]
-public class InventoryModifyEvent : UnityEvent<int, bool>//player (if zero then it's a swap), isDrop (alteritively isAltSwap)
+public class InventoryModifyEvent : UnityEvent<int, bool>//player (if -1 then it's a swap), isDrop (alteritively isAltSwap)
 {
 
 }
@@ -81,12 +81,12 @@ public class InventoryControl : MonoBehaviour {
             return false;
         }
 
-        staticBeforeChange.Invoke(0, in_alternate);
+        staticBeforeChange.Invoke(-1, in_alternate);
 
         activeGrid.Swap(in_alternate);
         remainingCooldown = majorActionCooldown;
 
-        staticAfterChange.Invoke(0, in_alternate);
+        staticAfterChange.Invoke(-1, in_alternate);
         return true;
     }
 

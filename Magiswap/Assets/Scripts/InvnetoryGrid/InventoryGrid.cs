@@ -9,6 +9,10 @@ public class InventoryGrid : MonoBehaviour {
 
     [HideInInspector]
     public List<InventoryNode> nodes;
+    [HideInInspector]
+    public Vector2 player1UIOffset;
+    [HideInInspector]
+    public Vector2 player2UIOffset;
 
 	// Use this for initialization
 	void Awake () {
@@ -65,6 +69,9 @@ public class InventoryGrid : MonoBehaviour {
 
     void BuildFromTemplate()
     {
+        player1UIOffset = template.player1UIOffset;
+        player2UIOffset = template.player2UIOffset;
+
         nodes = new List<InventoryNode>();
 
         for (int i = 0; i < template.nodes.Count; i++)
