@@ -23,6 +23,7 @@ public class PUNManager : Photon.PunBehaviour
     bool debugRoom;
     string levelToLoadName;
     string buttonName;
+    bool firstPlayerConnected;
     //bool publicGame;
 	// Use this for initialization
 	void Start ()
@@ -34,6 +35,7 @@ public class PUNManager : Photon.PunBehaviour
 	}
 
 	
+
     void OnGUI()
     {
         GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
@@ -51,6 +53,12 @@ public class PUNManager : Photon.PunBehaviour
     public override void OnJoinedLobby()
     {
         //PhotonNetwork.JoinOrCreateRoom("Testy", roomOptions, TypedLobby.Default);
+    }
+
+    public override void OnJoinedRoom()
+    {
+        base.OnJoinedRoom();
+        PhotonNetwork.Instantiate("", new Vector3(0, 0, 0), Quaternion.identity, 0);
     }
 
 
@@ -88,7 +96,9 @@ public class PUNManager : Photon.PunBehaviour
 
     public void OnCreatePrivate()
     {
-        if(lobbyState == LobbyState.NotInRoom)
+
+        //make this player have controller one here
+        if (lobbyState == LobbyState.NotInRoom)
         {
             for(int i = 0; i < inputField.transform.childCount; i++)
             {
@@ -100,6 +110,8 @@ public class PUNManager : Photon.PunBehaviour
 
     public void OnCreatePublic()
     {
+        //make this player have controller one here
+
         if (lobbyState == LobbyState.NotInRoom)
         {
             for (int i = 0; i < inputField.transform.childCount; i++)
@@ -112,6 +124,8 @@ public class PUNManager : Photon.PunBehaviour
 
     public void OnJoinPrivate()
     {
+
+        //make this player have controller two here
         if (lobbyState == LobbyState.NotInRoom)
         {
             inputField.interactable = true;
@@ -126,6 +140,8 @@ public class PUNManager : Photon.PunBehaviour
     public void JoinPublicGame()
     {
         //Debug.Log(buttonName);
+        //make this player have controller two here
+
         PhotonNetwork.JoinRoom(buttonName);
     }
 
