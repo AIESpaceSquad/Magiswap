@@ -49,12 +49,16 @@ public class FullUI : MonoBehaviour {
     Vector2[] itemRestingPositions;
     Vector2[] itemTargetPositions;
     Sprite[] itemTransitionSprites;
+    float[] itemTransitionTransparency;
+    Color[] backgroundTransitionColor;
     int dropedItemIndex = -1;
+    float currentTransitionLength;
 
     // Use this for initialization
     void Start () {
         RefreshTrackedGrid();
         transform.localScale = new Vector3(inventoryScale, inventoryScale, inventoryScale);
+        currentTransitionLength = InventoryControl.DropCooldown;
 	}
 	
 	// Update is called once per frame
@@ -73,38 +77,43 @@ public class FullUI : MonoBehaviour {
                 currentItem = trackedGrid.nodes[i].item.GetComponent<Item>();
             }
 
-            //BG color
-            if (currentItem == null)
+            if (InventoryControl.RemainingCooldown >= 0.0f)//transitioning
             {
-                inventoryBackgrounds[i].color = Color.white;
-                inventoryItemImages[i].color = new Color(1, 1, 1, 0);
-            }
-            else
-            {
-                inventoryBackgrounds[i].color = ColorManager.GetActualColor(currentItem.gameObject);
-                inventoryItemImages[i].color = Color.white;
-            }
-
-            //item stuff
-            if (InventoryControl.RemainingCooldown >= 0.0f)
-            {
-                if (itemTransitionSprites[i])//it's in an array and it will always exist
+                //item
+                inventoryItemImages[i].sprite = itemTransitionSprites[i];
+                inventoryItemImages[i].color = new Color(1, 1, 1, itemTransitionTransparency[i]);
+                //background
+                inventoryBackgrounds[i].color = backgroundTransitionColor[i];
+                //position
+                float t =  1.0f - (InventoryControl.RemainingCooldown / currentTransitionLength);
+                if (i == dropedItemIndex)
                 {
-                    //inventoryItemImages[i].color = Color.white;
-                    inventoryItemImages[i].color = Color.white;
+                    inventoryItems[i].transform.position = Vector3.Lerp(itemTargetPositions[i], itemRestingPositions[i], t);
                 }
                 else
                 {
-                    inventoryItemImages[i].color = new Color(1, 1, 1, 0);
+                    inventoryItems[i].transform.position = Vector3.Lerp(itemRestingPositions[i], itemTargetPositions[i], t);
                 }
-                inventoryItemImages[i].sprite = itemTransitionSprites[i];
             }
-            else
+            else//resting
             {
                 if (currentItem != null)
                 {
+                    //item
                     inventoryItemImages[i].sprite = currentItem.UISprite;
+                    inventoryItemImages[i].color = Color.white;
+                    //background
+                    inventoryBackgrounds[i].color = ColorManager.GetActualColor(currentItem.gameObject);
                 }
+                else
+                {
+                    //item
+                    inventoryItemImages[i].color = new Color(1, 1, 1, 0);
+                    //background
+                    inventoryBackgrounds[i].color = Color.white;
+                }
+                //position
+                inventoryItems[i].transform.position = itemRestingPositions[i];
             }
         }
 
@@ -130,8 +139,11 @@ public class FullUI : MonoBehaviour {
         inventoryItemImages = new Image[trackedGrid.nodes.Count];
         itemRestingPositions = new Vector2[trackedGrid.nodes.Count];
         itemTargetPositions = new Vector2[trackedGrid.nodes.Count];
+
         itemTransitionSprites = new Sprite[trackedGrid.nodes.Count];
-        
+        itemTransitionTransparency = new float[trackedGrid.nodes.Count];
+        backgroundTransitionColor = new Color[trackedGrid.nodes.Count];
+
         for (int i = 0; i < trackedGrid.nodes.Count; i++)
         {
             GameObject inventoryBGGameObject = new GameObject("BackgroundImage" + i);
@@ -179,6 +191,9 @@ public class FullUI : MonoBehaviour {
 
             inventoryItemImages[i].sprite = BGNoSpecial;
             inventoryItemImages[i].color = new Color(1, 1, 1, 0);
+
+            itemTransitionTransparency[i] = 0;
+            backgroundTransitionColor[i] = Color.white;
         }
 
         //portrait time
@@ -223,14 +238,20 @@ public class FullUI : MonoBehaviour {
     {
         //cache item sprites
         itemTransitionSprites = new Sprite[trackedGrid.nodes.Count];
+        itemTransitionTransparency = new float[trackedGrid.nodes.Count];
+        backgroundTransitionColor = new Color[trackedGrid.nodes.Count];
         for (int i = 0; i < trackedGrid.nodes.Count; i++)
         {
             itemTransitionSprites[i] = inventoryItemImages[i].sprite;
+            itemTransitionTransparency[i] = inventoryItemImages[i].color.a;
+            backgroundTransitionColor[i] = inventoryBackgrounds[i].color;
+            
         }
 
         //resolve target positions
         if (in_player == -1) //swapping
         {
+            currentTransitionLength = InventoryControl.SwapCooldown;
             for (int i = 0; i < trackedGrid.nodes.Count; i++)
             {
                 if (in_parameter)//isAltSwap
@@ -253,6 +274,7 @@ public class FullUI : MonoBehaviour {
     {
         if (in_player != -1)
         {
+            currentTransitionLength = InventoryControl.DropCooldown;
             int playerNodeIndex = -2;//there will be a OOB Index exception if no playernode is found
 
             for (int i = 0; i < trackedGrid.nodes.Count; i++)
@@ -271,6 +293,12 @@ public class FullUI : MonoBehaviour {
                 }
             }
 
+            //reset other target positions
+            for (int i = 0; i < itemTargetPositions.Length; i++)
+            {
+                itemTargetPositions[i] = itemRestingPositions[i];
+            }
+
             if (in_player == 1)
             {
                 itemTargetPositions[playerNodeIndex] = player1Portrait.transform.position;
@@ -282,13 +310,14 @@ public class FullUI : MonoBehaviour {
 
             if (in_parameter) //isDrop
             {
-                dropedItemIndex = playerNodeIndex;
+                dropedItemIndex = -1;
             }
             else
             {
-                dropedItemIndex = -1;
+                dropedItemIndex = playerNodeIndex;
+                //no null check but this should never be null at this point
+                itemTransitionSprites[playerNodeIndex] = trackedGrid.nodes[playerNodeIndex].item.GetComponent<Item>().UISprite;
             }
         }
     }
 }
-
