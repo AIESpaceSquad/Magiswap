@@ -11,11 +11,6 @@ public class GateScript : Activateable
     //target animator
 
     bool isComplete = false;
-
-	// Use this for initialization
-	void Start () {
-        
-	}
 	
 	// Update is called once per frame
 	void Update () {

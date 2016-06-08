@@ -18,21 +18,9 @@ public class ActivatorActivator : Activateable
         am_resetOnly,
     }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
 	// Update is called once per frame
 	void Update () {
-        if (target.isActive)
-        {
-            isActive = true;
-        }
-        else
-        {
-            isActive = false;
-        }
+        isActive = target.isActive;
 	}
 
     protected override void OnActivateImmediate(Item in_itemUsed)
@@ -45,15 +33,13 @@ public class ActivatorActivator : Activateable
             case activeMode.am_toggle:
                 if (isOn)
                 {
-
                     target.ForceReset();
-                    isOn = false;
                 }
                 else
                 {
                     target.ForceActivate(in_itemUsed);
-                    isOn = true;
                 }
+                isOn = !isOn;
                 break;
             case activeMode.am_activateOnly:
                 target.ForceActivate();

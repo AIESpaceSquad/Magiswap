@@ -38,8 +38,8 @@ public class listenerCharacter : MonoBehaviour {
     float groundXoffset = 0.5f;
     float grabRadius = 1.0f;
 
-    bool isFacingRight = true;
-    bool isGrounded = true;
+    //bool isFacingRight = true;
+    //bool isGrounded = true;
     bool jumpRequested = false;
     int moveDirection = 0;
 
@@ -54,17 +54,13 @@ public class listenerCharacter : MonoBehaviour {
 
     public bool IsGrounded
     {
-        get
-        {
-            return isGrounded;
-        }
+        get;
+        private set;
     } 
     public bool IsFacingRight
     {
-        get
-        {
-            return isFacingRight;
-        }
+        get;
+        private set;
     }
     public float MoveSpeed
     {
@@ -101,6 +97,9 @@ public class listenerCharacter : MonoBehaviour {
         playerColiders.Add(GetComponent<CircleCollider2D>());
 
         myAnimator = GetComponentInChildren<Animator>();
+
+        IsFacingRight = true;
+        IsGrounded = true;
     }
 
     // Update is called once per frame
@@ -111,15 +110,15 @@ public class listenerCharacter : MonoBehaviour {
         //determine ground state
         if (checkResult[(int)TerrainCheck.feetCentre] + checkResult[(int)TerrainCheck.feetRight] + checkResult[(int)TerrainCheck.feetLeft] > 0)
         {
-            isGrounded = true;
+            IsGrounded = true;
         }
         else
         {
-            isGrounded = false;
+            IsGrounded = false;
         }
 
         //check jump input
-        if (isGrounded && jumpRequested)
+        if (IsGrounded && jumpRequested)
         {
             jumpTime = jumpLength;
             jumpRequested = false;
@@ -132,7 +131,7 @@ public class listenerCharacter : MonoBehaviour {
         {
             if (jumpTime < jumpLength * 0.6f)//don't interupt the jump for the first part of it
             {
-                if (isGrounded)
+                if (IsGrounded)
                 {
                     jumpTime = 0;
                     yVelocity = 0;
@@ -144,7 +143,7 @@ public class listenerCharacter : MonoBehaviour {
             }
             yVelocity = JumpCurve.Evaluate(1.0f - jumpTime / jumpLength) * maxJumpForce;
         }
-        else if (isGrounded)
+        else if (IsGrounded)
         {
             yVelocity = 0;
         }
@@ -154,7 +153,7 @@ public class listenerCharacter : MonoBehaviour {
         {
             myRigidbody.velocity = new Vector2(0, yVelocity);
         }
-        else if (isGrounded)
+        else if (IsGrounded)
         {
             float xVelocity = moveDirection * moveSpeed;
             if (xVelocity > 0.001 || xVelocity < -0.001)
@@ -192,10 +191,10 @@ public class listenerCharacter : MonoBehaviour {
             transform.position += platformDiff;
         }
 
-        if (isGrounded)
+        if (IsGrounded)
         {
-            if ((moveDirection > 0 && !isFacingRight) ||
-                (moveDirection < 0 && isFacingRight))
+            if ((moveDirection > 0 && !IsFacingRight) ||
+                (moveDirection < 0 && IsFacingRight))
             {
                 Flip();
             }
@@ -224,7 +223,7 @@ public class listenerCharacter : MonoBehaviour {
             switch (ControllerHandler.GetControllerAcionState(controllerNumber))
             {
                 case InputTranslator.StateCode.state_act_jump:
-                    if (isGrounded)
+                    if (IsGrounded)
                     {
                         jumpRequested = true;
                         ControllerHandler.ActionFulfilled(controllerNumber);
@@ -334,7 +333,7 @@ public class listenerCharacter : MonoBehaviour {
 
     void Flip()
     {
-        isFacingRight = !isFacingRight;
+        IsFacingRight = !IsFacingRight;
         Vector3 newScale = transform.localScale;
         newScale.x *= -1;
         transform.localScale = newScale;
