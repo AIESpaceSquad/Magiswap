@@ -46,8 +46,8 @@ public class FullUI : MonoBehaviour {
     InventoryGrid trackedGrid;
 
     //transitions stuff
-    Vector2[] itemRestingPositions;
-    Vector2[] itemTargetPositions;
+    Vector3[] itemRestingPositions;
+    Vector3[] itemTargetPositions;
     Sprite[] itemTransitionSprites;
     float[] itemTransitionTransparency;
     Color[] backgroundTransitionColor;
@@ -122,6 +122,7 @@ public class FullUI : MonoBehaviour {
 
     }
 
+
     //dosen't delete game objects probably shouldn't be used more than once
     public void RefreshTrackedGrid()
     {
@@ -137,19 +138,22 @@ public class FullUI : MonoBehaviour {
         inventoryBackgrounds = new Image[trackedGrid.nodes.Count];
         inventoryItems = new GameObject[trackedGrid.nodes.Count];
         inventoryItemImages = new Image[trackedGrid.nodes.Count];
-        itemRestingPositions = new Vector2[trackedGrid.nodes.Count];
-        itemTargetPositions = new Vector2[trackedGrid.nodes.Count];
+        itemRestingPositions = new Vector3[trackedGrid.nodes.Count];
+        itemTargetPositions = new Vector3[trackedGrid.nodes.Count];
 
         itemTransitionSprites = new Sprite[trackedGrid.nodes.Count];
         itemTransitionTransparency = new float[trackedGrid.nodes.Count];
         backgroundTransitionColor = new Color[trackedGrid.nodes.Count];
+
+        GameObject backgroundParent = new GameObject("backgrounds");
+        backgroundParent.transform.SetParent(transform);
 
         for (int i = 0; i < trackedGrid.nodes.Count; i++)
         {
             GameObject inventoryBGGameObject = new GameObject("BackgroundImage" + i);
             inventoryItems[i] = new GameObject("ItemImage" + i);
 
-            inventoryBGGameObject.transform.parent = transform;
+            inventoryBGGameObject.transform.parent = backgroundParent.transform;
             inventoryItems[i].transform.parent = transform;
 
             //positions
@@ -198,7 +202,7 @@ public class FullUI : MonoBehaviour {
 
         //portrait time
         player1Portrait = new GameObject("player1Portrait");
-        //this add & use is scetchy to me
+        //this add & use is scetchy to me (as is my spelling)
         player1Portrait.AddComponent<Image>().sprite = PIPlayer1;
 
         player1Portrait.transform.SetParent(transform.parent); //MY parent not myself
@@ -216,7 +220,7 @@ public class FullUI : MonoBehaviour {
         GameObject player1BorderGO = new GameObject("player1Border");
 
         player1BorderGO.transform.SetParent(transform.parent);
-        player1BorderGO.transform.position = transform.position + new Vector3(0, 0, 1) + (Vector3)(trackedGrid.player1UIOffset * offsetSize);//magic shift forward on the z so it's on top of the portrait
+        player1BorderGO.transform.position = transform.position + (Vector3)(trackedGrid.player1UIOffset * offsetSize);//magic shift forward on the z so it's on top of the portrait
 
         p1BorderImage = player1BorderGO.AddComponent<Image>();
 
@@ -224,7 +228,7 @@ public class FullUI : MonoBehaviour {
         GameObject player2BorderGO = new GameObject("player2Border");
 
         player2BorderGO.transform.SetParent(transform.parent);
-        player2BorderGO.transform.position = transform.position + new Vector3(0, 0, 1) + (Vector3)(trackedGrid.player2UIOffset * offsetSize);
+        player2BorderGO.transform.position = transform.position + (Vector3)(trackedGrid.player2UIOffset * offsetSize);
 
         p2BorderImage = player2BorderGO.AddComponent<Image>();
 
