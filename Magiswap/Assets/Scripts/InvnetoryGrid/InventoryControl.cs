@@ -15,7 +15,7 @@ public class InventoryControl : MonoBehaviour {
     static InventoryNode player2Item;
 
     [SerializeField]
-    static float majorActionCooldown = 1.0f;
+    static float majorActionCooldown = 0.5f;
     [SerializeField]
     static float minorActionCooldown = 0.25f;
 
