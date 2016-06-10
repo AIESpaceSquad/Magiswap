@@ -7,6 +7,8 @@ public class ControllerHandler : MonoBehaviour {
 
     private static InputTranslator[] controllerReaders;
 
+    private static float genralReadDeadzone = 0.2f;
+
 	// Use this for initialization
 	void Start () {
 
@@ -86,5 +88,61 @@ public class ControllerHandler : MonoBehaviour {
         {
             Debug.Log("provided index is out of bounds");
         }
+    }
+
+    public static float MenuControllerGetXAxis()
+    {
+        
+        return GetAnyAxis("_moveX");
+    }
+
+    public static float MenuControllerGetYAxis()
+    {
+        return GetAnyAxis("_moveY");
+    }
+
+    public static bool MenuControllerGetActivateButton()
+    {
+        return IsAnyButton("_jump");
+    }
+
+    public static bool MenuControllerGetReturnButton()
+    {
+        return IsAnyButton("_activate");
+    }
+
+    public static bool AnyControllerGetEscapeButton()
+    {
+        return IsAnyButton("_start");
+    }
+
+    static bool IsAnyButton(string in_axis)
+    {
+        bool isAnyTrue = false;
+        for (int i = 0; i < controllerNames.Length; i++)
+        {
+            if (Input.GetButton(controllerNames[i] + in_axis))
+            {
+                isAnyTrue = true;
+                break;
+            }
+        }
+
+        return isAnyTrue;
+    }
+
+    static float GetAnyAxis(string in_axis)
+    {
+        float outputAxis = Input.GetAxisRaw(controllerNames[0] + in_axis);
+
+        if (Mathf.Abs(outputAxis) > genralReadDeadzone)
+        {
+            return outputAxis;
+        }
+
+        outputAxis = Input.GetAxisRaw(controllerNames[1] + in_axis);
+        outputAxis += Input.GetAxisRaw(controllerNames[2] + in_axis);
+
+        return outputAxis;
     }
 }
