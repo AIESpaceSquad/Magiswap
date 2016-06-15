@@ -5,10 +5,10 @@ using System.Collections.Generic;
 public class listenerCharacter : MonoBehaviour {
 
 
-    [SerializeField]
-    int playerNumber = 1;
-    [SerializeField]
-    int controllerNumber = -1;//-1 is no controller
+    //[SerializeField]
+    public int playerNumber = 1;
+    //[SerializeField]
+    public int controllerNumber = -1;//-1 is no controller
 
     [SerializeField]
     float moveSpeed = 10;

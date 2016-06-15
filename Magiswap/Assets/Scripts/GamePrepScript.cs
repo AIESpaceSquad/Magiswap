@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GamePrepScript : MonoBehaviour {
@@ -96,11 +97,11 @@ public class GamePrepScript : MonoBehaviour {
             {
                 if (CurrentMenu == curentMenu.cm_main)
                 {
-                    changeIndex(mainIndex - 1);
+                    changeIndex(mainIndex + 1);
                 }
                 else
                 {
-                    changeIndex(subIndex - 1);
+                    changeIndex(subIndex + 1);
                 }
                 controllerRemainingCooldown = controllerCooldown;
             }
@@ -108,11 +109,11 @@ public class GamePrepScript : MonoBehaviour {
             {
                 if (CurrentMenu == curentMenu.cm_main)
                 {
-                    changeIndex(mainIndex + 1);
+                    changeIndex(mainIndex - 1);
                 }
                 else
                 {
-                    changeIndex(subIndex + 1);
+                    changeIndex(subIndex - 1);
                 }
                 controllerRemainingCooldown = controllerCooldown;
             }
@@ -308,6 +309,7 @@ public class GamePrepScript : MonoBehaviour {
         {
             case curentMenu.cm_main:
                 //return to main scene
+                SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
                 break;
             case curentMenu.cm_levels:
                 changeMenu(curentMenu.cm_main, mainIndex);
@@ -322,6 +324,6 @@ public class GamePrepScript : MonoBehaviour {
     {
         GameSettingsContainer.player1Controller = (GameSettingsContainer.playerControlSource)player1SavedIndex;
         GameSettingsContainer.player2Controller = (GameSettingsContainer.playerControlSource)player2SavedIndex;
-        //go to level
+        SceneManager.LoadScene(levels[readiedLevelIndex], LoadSceneMode.Single);
     }
 }

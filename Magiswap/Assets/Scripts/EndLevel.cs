@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class EndLevel : MonoBehaviour
 {
     GameObject collidedPlayer;
+    //MainMenu or next level
     public string levelToLoad;
 	// Use this for initialization
 	void Start ()
@@ -28,7 +29,7 @@ public class EndLevel : MonoBehaviour
         else if(coll.transform.tag == "Player" && 
                 collidedPlayer != coll.gameObject)
         {
-            SceneManager.LoadScene("AlphaScene");
+            SceneManager.LoadScene(levelToLoad);
         }
     }
 }

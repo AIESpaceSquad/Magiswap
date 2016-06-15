@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class ControllerHandler : MonoBehaviour {
@@ -35,6 +36,11 @@ public class ControllerHandler : MonoBehaviour {
 	    for (int i = 0; i < controllerReaders.Length; i++)
         {
             controllerReaders[i].Update();
+        }
+        //constant return to menu button
+        if (IsAnyButton("_start"))
+        {
+            SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
         }
 	}
 

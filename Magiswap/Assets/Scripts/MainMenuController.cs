@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class MainMenuController : MonoBehaviour {
@@ -85,6 +86,7 @@ public class MainMenuController : MonoBehaviour {
         {
             case 0:
                 //go to play scene
+                SceneManager.LoadScene("GamePrep", LoadSceneMode.Single);
                 break;
             case 1:
                 Application.Quit();
